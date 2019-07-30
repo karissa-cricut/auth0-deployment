@@ -1,5 +1,5 @@
 {
   "enabled": true,
-  "order": 10,
+  "order": 15,
   "stage": "login_success"
 }
