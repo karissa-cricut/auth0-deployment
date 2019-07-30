@@ -1,0 +1,14 @@
+{
+  "name": "User",
+  "description": "Role for users.",
+  "permissions": [
+    {
+      "permission_name": "read:events",
+      "resource_server_identifier": "https://api.letsdoauth.com"
+    },
+    {
+      "permission_name": "read:users",
+      "resource_server_identifier": "https://api.letsdoauth.com"
+    }
+  ]
+}

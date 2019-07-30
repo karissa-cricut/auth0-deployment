@@ -1,0 +1,25 @@
+{
+  "name": "Auth0 Demo API Client",
+  "description": "Auth0 Machine to Machine API Client",
+  "logo_uri": "",
+  "is_first_party": true,
+  "app_type": "non_interactive",
+  "token_endpoint_auth_method": "client_secret_post",
+  "callbacks": [],
+  "web_origins": [],
+  "allowed_logout_urls": [],
+  "allowed_origins": [],
+  "jwt_configuration": {
+    "lifetime_in_seconds": 36000,
+    "scopes": {},
+    "alg": "RS256"
+  },
+  "client_metadata": {},
+  "oidc_conformant": false,
+  "grant_types": [
+    "authorization_code",
+    "client_credentials",
+    "implicit",
+    "refresh_token"
+  ]
+}

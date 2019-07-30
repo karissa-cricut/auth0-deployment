@@ -1,0 +1,34 @@
+{
+  "name": "Auth0 Demo Web",
+  "description": "Auth0 Web demonstration application.",
+  "logo_uri": "",
+  "is_first_party": true,
+  "app_type": "regular_web",
+  "token_endpoint_auth_method": "client_secret_post",
+  "callbacks": [
+    "http://localhost:3000/callback"
+  ],
+  "web_origins": [
+    "http://localhost:3000"
+  ],
+  "allowed_logout_urls": [
+    "http://localhost:3000"
+  ],
+  "allowed_origins": [
+    "http://localhost:3000"
+  ],
+  "jwt_configuration": {
+    "lifetime_in_seconds": 36000,
+    "scopes": {},
+    "alg": "RS256"
+  },
+  "client_metadata": {},
+  "oidc_conformant": true,
+  "grant_types": [
+    "authorization_code",
+    "client_credentials",
+    "implicit",
+    "refresh_token"
+  ],
+  "addons": {}
+}

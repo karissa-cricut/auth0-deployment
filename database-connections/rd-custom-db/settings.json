@@ -1,0 +1,13 @@
+{
+  "name": "rd-custom-db",
+  "strategy": "auth0",
+  "is_domain_connection": false,
+  "enabled_clients": [],
+  "options": {
+    "enabledDatabaseCustomization": true,
+    "requires_username": false,
+    "import_mode": false,
+    "disable_signup": false,
+    "passwordPolicy": "good"
+  }
+}
