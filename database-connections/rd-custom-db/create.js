@@ -8,7 +8,7 @@
 
 function create(user, callback) {
   const request = require('request@2.81.0');
-  const url = 'https://letsdoauth-api.netlify.com/.netlify/functions/create'; // prettier-ignore
+  const url = 'https://letsdoauth-api.netlify.com/.netlify/functions/create';
 
   request.post(
     {

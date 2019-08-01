@@ -8,7 +8,7 @@
 
 function changePassword(email, newPassword, callback) {
   const request = require('request@2.81.0');
-  const url = 'https://letsdoauth-api.netlify.com/.netlify/functions/change-password'; // prettier-ignore
+  const url = 'https://letsdoauth-api.netlify.com/.netlify/functions/change-password';
 
   request.patch(
     {

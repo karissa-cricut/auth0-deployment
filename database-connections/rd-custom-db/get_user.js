@@ -8,7 +8,7 @@
 
 function getUser(email, callback) {
   const request = require('request@2.81.0');
-  const url = 'https://letsdoauth-api.netlify.com/.netlify/functions/get-user'; // prettier-ignore
+  const url = 'https://letsdoauth-api.netlify.com/.netlify/functions/get-user';
 
   request.get(
     {

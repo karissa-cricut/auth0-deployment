@@ -8,7 +8,7 @@
 
 function login(email, password, callback) {
   const request = require('request@2.81.0');
-  const url = 'https://letsdoauth-api.netlify.com/.netlify/functions/login'; // prettier-ignore
+  const url = 'https://letsdoauth-api.netlify.com/.netlify/functions/login';
 
   request.post(
     {
