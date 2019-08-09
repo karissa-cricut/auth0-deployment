@@ -8,26 +8,31 @@ async function stashMfaEnrollment(user, context, callback) {
     return;
   }
 
-  const phoneNumber = user.app_metadata.phone_number;
-
   const management = new ManagementClient({
     token: auth0.accessToken,
     domain: auth0.domain
   });
+
+  const { phone_number } = user.app_metadata;
 
   const enrollments = await management.getGuardianEnrollments({
     id: user.user_id
   });
 
   const hasMfaEnrollment = !!enrollments.find(e =>
-    e.phone_number.slice(-4) === phoneNumber.slice(-4) &&
+    e.phone_number.slice(-4) === phone_number.slice(-4) &&
     e.status === 'confirmed' &&
     e.type === 'sms'
   );
 
-  context.idToken[`${NS}/has_mfa_enrollment`] = hasMfaEnrollment;
+  if (hasMfaEnrollment && context.protocol !== 'oauth2-refresh-token') {
+    context.multifactor = {
+      provider: 'any',
+      allowRememberBrowser: false
+    };
+  }
 
-  if (hasMfaEnrollment || (!hasMfaEnrollment && context.protocol === 'oauth2-refresh-token')) {
+  if (!hasMfaEnrollment && context.protocol === 'oauth2-refresh-token') {
     context.multifactor = {
       provider: 'any',
       allowRememberBrowser: false
