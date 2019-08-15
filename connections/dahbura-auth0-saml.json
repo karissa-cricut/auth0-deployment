@@ -2,14 +2,9 @@
   "name": "dahbura-auth0-saml",
   "strategy": "samlp",
   "is_domain_connection": false,
-  "enabled_clients": [
-    "Auth0 Demo SPA",
-    "Auth0 Demo Web"
-  ],
+  "enabled_clients": ["Auth0 Demo SPA", "Auth0 Demo Web"],
   "options": {
-    "domain_aliases": [
-      "letsdoauth.com"
-    ],
+    "domain_aliases": ["letsdoauth.com"],
     "tenant_domain": "letsdoauth.com",
     "signInEndpoint": "https://rudydahbura-idp.auth0.com/samlp/snv8seeCplkSMF0GPbXHrQdSA8RcOquz",
     "signOutEndpoint": "https://rudydahbura-idp.auth0.com/samlp/snv8seeCplkSMF0GPbXHrQdSA8RcOquz/logout",
@@ -27,9 +22,7 @@
     "subject": {
       "commonName": "rudydahbura-idp.auth0.com"
     },
-    "thumbprints": [
-      "1264aebe97f0f71f8b7c03172c466a5227dd6845"
-    ],
+    "thumbprints": ["1264aebe97f0f71f8b7c03172c466a5227dd6845"],
     "cert": "-----BEGIN CERTIFICATE-----\r\nMIIDDTCCAfWgAwIBAgIJPmvE5SsjxI+aMA0GCSqGSIb3DQEBCwUAMCQxIjAgBgNV\r\nBAMTGXJ1ZHlkYWhidXJhLWlkcC5hdXRoMC5jb20wHhcNMTkwNjA0MTk1ODI4WhcN\r\nMzMwMjEwMTk1ODI4WjAkMSIwIAYDVQQDExlydWR5ZGFoYnVyYS1pZHAuYXV0aDAu\r\nY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0FFKvQCD+k9KIRCf\r\nAquxR2kS/+1dWLY8cPXlqrslvxjPZPi5yhhTQNTu07XOMk0YPnMWiX3DH2FEPq/P\r\n6mAHajEVGlDU8Ho1c2GrffcGFr0Whk1VTNnkOAWH4/NQjb+cqj6IuHFfCGFTV6AL\r\n2RKMbKQy3gCNT7XHTo3iFWkaOnkcmc9cdVRi2+o5ZpBs5z06jVzAZLoCIFA5wEP2\r\n+hQGOfzhXlM9FXGuN/v3ikvqU+VdbKTwO7LWwZKBGpMVZ36oRgP9bWxcxr8NsE3g\r\nvd/QE3gIcCbC2Oxrxex5PV5cyvH9StVaFNWt+HiJZoOBkQ3nfYVmvzHYrdsGR36v\r\nmQFbgQIDAQABo0IwQDAPBgNVHRMBAf8EBTADAQH/MB0GA1UdDgQWBBTr7Usg+ZXi\r\nORTleR/cwKolzjffqzAOBgNVHQ8BAf8EBAMCAoQwDQYJKoZIhvcNAQELBQADggEB\r\nACXf0kSXWnGf5BA8JTw0rUblOdUL9bjigHBypxRU1XWjsKYTxi3jXilC6nabNUuE\r\nAO1UspP/Rd/QmNwSt0v8j0Y3Fj+q5oj9O8h1WfoWwn22Gdf4DeCcqsCquPzN4Qjd\r\ndiiXMY/VBK20Iwqp4rvTlTnigfZMrMQdDGn4GS+n46qr6WBB+tgb3hdLYIhJXK8h\r\nYYWsJoBfX9dvW2fiHPPG0wLuSM4QcJzqR9i40WV2woX1cP/x8W6kxsjG2M8tOGVw\r\n4OpdYyI8kykB7F9L9WNZTnJeeMsOVbD5qwOlce6DTs1YqVNc/A8rLClw9E3eIFwf\r\nhn8SNoc6kxkEkrZcT2hX6lk=\r\n-----END CERTIFICATE-----\r\n"
   }
 }

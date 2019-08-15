@@ -4,9 +4,7 @@
   "is_domain_connection": false,
   "enabled_clients": [],
   "options": {
-    "domain_aliases": [
-      "letsdoauth.com"
-    ],
+    "domain_aliases": ["letsdoauth.com"],
     "tenant_domain": "letsdoauth.com",
     "entityId": "urn:idp.letsdoauth.com:dahbura-adfs-dc-saml",
     "signInEndpoint": "https://adfs-dc.letsdoauth.com/adfs/ls",
@@ -25,14 +23,8 @@
     "subject": {
       "commonName": "ADFS Signing - adfs-dc.letsdoauth.com"
     },
-    "thumbprints": [
-      "dadada0b340b172bba3232683a906393fe9845ee"
-    ],
+    "thumbprints": ["dadada0b340b172bba3232683a906393fe9845ee"],
     "cert": "-----BEGIN CERTIFICATE-----\nMIIC6DCCAdCgAwIBAgIQHGUj/VVpIaBFnxZPyIsfIDANBgkqhkiG9w0BAQsFADAw\nMS4wLAYDVQQDEyVBREZTIFNpZ25pbmcgLSBhZGZzLWRjLmxldHNkb2F1dGguY29t\nMB4XDTE5MDUzMTE3NTA0NFoXDTIwMDUzMDE3NTA0NFowMDEuMCwGA1UEAxMlQURG\nUyBTaWduaW5nIC0gYWRmcy1kYy5sZXRzZG9hdXRoLmNvbTCCASIwDQYJKoZIhvcN\nAQEBBQADggEPADCCAQoCggEBANi1BYXQsZQo18WLC/dIDJEC04jYCwLPtYULLeTw\nq2R7WT4WRG4ObUVXYXdtKwxqmZnoX1sD2+iqdQhYzAhce7zZzH6LUzCyHZnSc/Rh\nGOZNKT+YT+sNKPJN4DWNi3bsf5qa0Yu4b3LgnsGspiWv7MnslWwCBYvQYqzlfKji\n78J5iHG6I57F0WeGa4ViO2qySCuQXIkuIUAp7OISIY3wk4c8ZLgd2rS8AXuit9g7\nFKfZzopWuovhhqlMJQZ/Ap9fRoKvzbcEcXW17Cym7cVcKer4CFUSVOX9dSYfKyvA\np2bnWHYHq1w+Q8lBg9FyO5QKLVgewNPm2f3Op50dHrVFfxsCAwEAATANBgkqhkiG\n9w0BAQsFAAOCAQEAENiBQkXEzsEfIlAZ4U77lUppXSEeujLM8Z5NG9nPI6f1ppE4\nXXIJAh3yZlSUxXqPr1VJbkMBP4xIiFtSGmBzjL91IEUqwaoTfOtkP86dskwgVJZw\nunvR3NSyXzB7IMM5CddSdeLpdwTLTSU+rl1KGJlMaRFQdXAO3G+YcY0dkit3h/tQ\n5YJz5NNcJx0XAP2QUqujBYYNBpP8btzd/pxNSveDGaEyG+tgwYw3mHWwYE0Rs+sK\nogXBuQ/p/dbEwVBYi6GhyLLoqrm30w14cZVK63K/j63aAOB+fcST4yksvL2yDI27\nPqBWSTz4I+byn+vjB8rHo0++R8tEpxGvKl6hbQ==\n-----END CERTIFICATE-----\n",
-    "non_persistent_attrs": [
-      "company",
-      "department",
-      "title"
-    ]
+    "non_persistent_attrs": ["company", "department", "title"]
   }
 }

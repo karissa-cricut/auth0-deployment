@@ -8,7 +8,7 @@
     "url": "https://github.com/rdahbura/auth0-deployment.git"
   },
   "scripts": {
-    "format": "prettier --write './pages/**/*'"
+    "format": "prettier --write './{clients,connections,database-connections,emails,grants,pages,resource-servers,roles,rules}/**/*.{css,html,js,json,jsx}'"
   },
   "dependencies": {
     "lodash": "^4.17.14",

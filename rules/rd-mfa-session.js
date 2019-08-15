@@ -10,13 +10,11 @@ function multiFactorSession(user, context, callback) {
   }
 
   const {
-    authentication: {
-      methods: methods = []
-    }
+    authentication: { methods: methods = [] }
   } = context;
 
   const completedMfa = !!context.authentication.methods.find(
-    (method) => method.name === 'mfa'
+    method => method.name === 'mfa'
   );
 
   if (completedMfa) {

@@ -12,10 +12,7 @@
     "https://letsdoauth.netlify.com/callback-idp"
   ],
   "initiate_login_uri": "https://letsdoauth.netlify.com/login",
-  "web_origins": [
-    "https://localhost:3000",
-    "https://letsdoauth.netlify.com"
-  ],
+  "web_origins": ["https://localhost:3000", "https://letsdoauth.netlify.com"],
   "allowed_logout_urls": [
     "https://localhost:3000",
     "https://letsdoauth.netlify.com"
@@ -28,10 +25,6 @@
   },
   "client_metadata": {},
   "oidc_conformant": true,
-  "grant_types": [
-    "authorization_code",
-    "implicit",
-    "refresh_token"
-  ],
+  "grant_types": ["authorization_code", "implicit", "refresh_token"],
   "addons": {}
 }
