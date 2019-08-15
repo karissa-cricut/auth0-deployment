@@ -51,7 +51,7 @@
     }
   </style>
 
-  <script src="https://cdn.auth0.com/js/lock/11.17.0/lock.min.js"></script>
+  <script src="https://cdn.auth0.com/js/lock/11.17.2/lock.min.js"></script>
   <script>
     // Decode utf8 characters properly
     var config = JSON.parse(
@@ -115,7 +115,7 @@
       mustAcceptTerms: true,
       additionalSignUpFields: [
         {
-          name: 'first_name',
+          name: 'given_name',
           placeholder: 'first name',
           validator: function (value) {
             return {
@@ -125,7 +125,7 @@
           }
         },
         {
-          name: 'last_name',
+          name: 'family_name',
           placeholder: 'last name',
           validator: function (value) {
             return {
