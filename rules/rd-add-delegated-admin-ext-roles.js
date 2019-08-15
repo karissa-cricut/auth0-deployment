@@ -32,5 +32,5 @@ function addDelegatedAdminExtRoles(user, context, callback) {
   auth0.users
     .updateAppMetadata(user.user_id, user.app_metadata)
     .then(() => callback(null, user, context))
-    .catch(err => callback(err));
+    .catch((err) => callback(err));
 }

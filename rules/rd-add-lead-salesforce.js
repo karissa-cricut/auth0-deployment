@@ -18,13 +18,13 @@ function addLeadSalesforce(user, context, callback) {
 
   getSalesforceToken(SF_CLIENT_ID, SF_CLIENT_SECRET, SF_USERNAME, SF_PASSWORD)
     .then(
-      resp => {
+      (resp) => {
         const salesforceUrl = resp.instance_url;
         const salesforceToken = resp.access_token;
 
         return createSalesforceLead(salesforceUrl, salesforceToken, user);
       },
-      err => {
+      (err) => {
         slack.alert({
           channel: SLACK_CHANNEL,
           text: 'Error getting Salesforce access token.',
@@ -37,7 +37,7 @@ function addLeadSalesforce(user, context, callback) {
       }
     )
     .then(
-      resp => {
+      (resp) => {
         slack.alert({
           channel: SLACK_CHANNEL,
           text: `Succesfully created Salesforce lead: ${user.email}.`
@@ -49,7 +49,7 @@ function addLeadSalesforce(user, context, callback) {
 
         callback(null, user, context);
       },
-      err => {
+      (err) => {
         slack.alert({
           channel: SLACK_CHANNEL,
           text: 'Error creating Salesforce lead.',

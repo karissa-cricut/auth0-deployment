@@ -13,14 +13,14 @@ function enrichProfile(user, context, callback) {
   }
 
   getProfile().then(
-    resp => {
+    (resp) => {
       user.user_metadata.fullcontact = resp;
 
       auth0.users.updateUserMetadata(user.user_id, user.user_metadata);
 
       callback(null, user, context);
     },
-    err => {
+    (err) => {
       slack.alert({
         channel: SLACK_CHANNEL,
         text: 'Fullcontact API error.',
