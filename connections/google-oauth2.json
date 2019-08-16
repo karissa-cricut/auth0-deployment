@@ -2,5 +2,5 @@
   "name": "google-oauth2",
   "strategy": "google-oauth2",
   "is_domain_connection": false,
-  "enabled_clients": ["Auth0 Demo SPA", "Auth0 Demo Web"]
+  "enabled_clients": ["Auth0 Demo SPA"]
 }
