@@ -15,7 +15,6 @@
     "request": "^2.88.0"
   },
   "devDependencies": {
-    "babel-eslint": "^10.0.2",
     "eslint": "^6.0.1",
     "eslint-config-prettier": "^6.0.0",
     "eslint-plugin-html": "^6.0.0",
@@ -28,9 +27,9 @@
     "extends": [
       "prettier"
     ],
-    "parser": "babel-eslint",
     "parserOptions": {
-      "ecmaVersion": 2017
+      "ecmaVersion": 2017,
+      "sourceType": "module"
     },
     "plugins": [
       "html"
