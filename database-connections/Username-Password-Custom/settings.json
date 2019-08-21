@@ -1,5 +1,5 @@
 {
-  "name": "rd-custom-db",
+  "name": "Username-Password-Custom",
   "strategy": "auth0",
   "is_domain_connection": false,
   "enabled_clients": [],
