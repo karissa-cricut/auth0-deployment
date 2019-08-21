@@ -4,10 +4,14 @@
   "is_domain_connection": false,
   "enabled_clients": [],
   "options": {
-    "enabledDatabaseCustomization": true,
-    "requires_username": false,
-    "import_mode": false,
     "disable_signup": false,
-    "passwordPolicy": "good"
+    "enabledDatabaseCustomization": true,
+    "import_mode": false,
+    "password_complexity_options": { "min_length": 8 },
+    "password_dictionary": { "enable": false, "dictionary": [] },
+    "password_history": { "enable": false, "size": 5 },
+    "password_no_personal_info": { "enable": false },
+    "passwordPolicy": "good",
+    "requires_username": false
   }
 }
