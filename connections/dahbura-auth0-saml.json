@@ -1,5 +1,6 @@
 {
   "name": "dahbura-auth0-saml",
+  "display_name": "dahbura-auth0-saml",
   "strategy": "samlp",
   "is_domain_connection": false,
   "enabled_clients": ["Auth0 Demo SPA"],
