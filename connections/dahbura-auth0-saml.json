@@ -3,7 +3,7 @@
   "display_name": "Auth0 SAML",
   "strategy": "samlp",
   "is_domain_connection": false,
-  "enabled_clients": ["Auth0 Demo SPA"],
+  "enabled_clients": [],
   "options": {
     "domain_aliases": ["letsdoauth.com"],
     "tenant_domain": "letsdoauth.com",
