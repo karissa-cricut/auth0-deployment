@@ -1,6 +1,6 @@
 {
   "name": "dahbura-auth0-oidc",
-  "display_name": "dahbura-auth0-oidc",
+  "display_name": "Dahbura Auth0 OIDC",
   "strategy": "oidc",
   "is_domain_connection": false,
   "enabled_clients": [],
