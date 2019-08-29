@@ -4,7 +4,7 @@
   "logo_uri": "",
   "is_first_party": true,
   "app_type": "non_interactive",
-  "token_endpoint_auth_method": "post",
+  "token_endpoint_auth_method": "client_secret_post",
   "callbacks": [],
   "initiate_login_uri": "",
   "web_origins": [],
