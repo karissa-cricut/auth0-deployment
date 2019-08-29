@@ -1,6 +1,6 @@
 {
   "name": "Auth0 Deploy Client",
-  "description": "Auth0 deploy client machine to machine application.",
+  "description": "Auth0 Deploy CLI machine to machine application.",
   "logo_uri": "",
   "is_first_party": true,
   "app_type": "non_interactive",
