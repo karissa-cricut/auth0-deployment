@@ -20,8 +20,9 @@
   "allowed_origins": [],
   "jwt_configuration": {
     "alg": "RS256",
+    "scopes": {},
     "lifetime_in_seconds": 36000,
-    "scopes": {}
+    "secret_encoded": false
   },
   "client_metadata": {},
   "oidc_conformant": true,

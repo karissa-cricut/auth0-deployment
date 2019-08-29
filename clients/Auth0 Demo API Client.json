@@ -10,9 +10,10 @@
   "allowed_logout_urls": [],
   "allowed_origins": [],
   "jwt_configuration": {
-    "lifetime_in_seconds": 36000,
+    "alg": "RS256",
     "scopes": {},
-    "alg": "RS256"
+    "lifetime_in_seconds": 36000,
+    "secret_encoded": false
   },
   "client_metadata": {},
   "oidc_conformant": false,
