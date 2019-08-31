@@ -6,14 +6,20 @@
   "app_type": "spa",
   "token_endpoint_auth_method": "none",
   "callbacks": [
+    "http://localhost:3000/callback",
     "https://localhost:3000/callback",
     "https://localhost:3000/callback-idp",
     "https://letsdoauth.netlify.com/callback",
     "https://letsdoauth.netlify.com/callback-idp"
   ],
   "initiate_login_uri": "https://letsdoauth.netlify.com/login",
-  "web_origins": ["https://localhost:3000", "https://letsdoauth.netlify.com"],
+  "web_origins": [
+    "http://localhost:3000",
+    "https://localhost:3000",
+    "https://letsdoauth.netlify.com"
+  ],
   "allowed_logout_urls": [
+    "http://localhost:3000",
     "https://localhost:3000",
     "https://letsdoauth.netlify.com"
   ],
