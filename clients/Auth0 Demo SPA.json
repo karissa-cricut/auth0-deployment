@@ -6,7 +6,7 @@
   "app_type": "spa",
   "token_endpoint_auth_method": "none",
   "callbacks": [
-    "http://localhost:3000/callback",
+    "http://localhost:3000",
     "https://localhost:3000/callback",
     "https://localhost:3000/callback-idp",
     "https://letsdoauth.netlify.com/callback",
