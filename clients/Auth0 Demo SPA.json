@@ -7,9 +7,8 @@
   "token_endpoint_auth_method": "none",
   "callbacks": [
     "https://localhost:3000",
-    "https://localhost:3000/callback",
     "https://localhost:3000/callback-idp",
-    "https://letsdoauth.netlify.com/callback",
+    "https://letsdoauth.netlify.com",
     "https://letsdoauth.netlify.com/callback-idp"
   ],
   "initiate_login_uri": "https://letsdoauth.netlify.com/login",
