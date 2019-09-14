@@ -11,21 +11,19 @@ async function login(email, password, callback) {
   const jwt = require('jsonwebtoken@8.5.0');
   const req = require('request@2.81.0');
 
-  const NETLIFY = 'https://letsdoauth-api.netlify.com/.netlify/functions';
+  const BASE_URL = 'https://letsdoauth-api.netlify.com';
 
   const [postAsync, signAsync] = [req.post, jwt.sign].map(util.promisify);
 
-  const optionsSign = {
-    issuer: configuration.JWT_ISSUER,
-    audience: configuration.JWT_AUDIENCE,
-    expiresIn: '10s'
-  };
-
-  const token = await signAsync({}, configuration.JWT_SECRET, optionsSign);
-
   try {
+    const token = await signAsync({}, configuration.JWT_SECRET, {
+      issuer: configuration.JWT_ISSUER,
+      audience: configuration.JWT_AUDIENCE,
+      expiresIn: '10s'
+    });
+
     const { body, statusCode } = await postAsync({
-      url: `${NETLIFY}/login`,
+      url: `${BASE_URL}/.netlify/functions/login`,
       headers: {
         Authorization: `Bearer ${token}`
       },
@@ -48,9 +46,6 @@ async function login(email, password, callback) {
 
     callback(null, user);
   } catch (err) {
-    if (err) {
-      callback(err);
-      return;
-    }
+    callback(err);
   }
 }

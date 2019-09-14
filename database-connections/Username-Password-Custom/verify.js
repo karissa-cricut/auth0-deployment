@@ -9,21 +9,19 @@ async function verify(email, callback) {
   const jwt = require('jsonwebtoken@8.5.0');
   const req = require('request@2.81.0');
 
-  const NETLIFY = 'https://letsdoauth-api.netlify.com/.netlify/functions';
+  const BASE_URL = 'https://letsdoauth-api.netlify.com';
 
   const [patchAsync, signAsync] = [req.patch, jwt.sign].map(util.promisify);
 
-  const optionsSign = {
-    issuer: configuration.JWT_ISSUER,
-    audience: configuration.JWT_AUDIENCE,
-    expiresIn: '10s'
-  };
-
-  const token = await signAsync({}, configuration.JWT_SECRET, optionsSign);
-
   try {
+    const token = await signAsync({}, configuration.JWT_SECRET, {
+      issuer: configuration.JWT_ISSUER,
+      audience: configuration.JWT_AUDIENCE,
+      expiresIn: '10s'
+    });
+
     const { body, statusCode } = await patchAsync({
-      url: `${NETLIFY}/verify`,
+      url: `${BASE_URL}/.netlify/functions/verify`,
       headers: {
         Authorization: `Bearer ${token}`
       },
@@ -40,9 +38,6 @@ async function verify(email, callback) {
 
     callback(null, true);
   } catch (err) {
-    if (err) {
-      callback(err);
-      return;
-    }
+    callback(err);
   }
 }

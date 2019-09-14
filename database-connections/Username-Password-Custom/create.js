@@ -11,21 +11,19 @@ async function create(user, callback) {
   const jwt = require('jsonwebtoken@8.5.0');
   const req = require('request@2.81.0');
 
-  const NETLIFY = 'https://letsdoauth-api.netlify.com/.netlify/functions';
+  const BASE_URL = 'https://letsdoauth-api.netlify.com';
 
   const [postAsync, signAsync] = [req.post, jwt.sign].map(util.promisify);
 
-  const optionsSign = {
-    issuer: configuration.JWT_ISSUER,
-    audience: configuration.JWT_AUDIENCE,
-    expiresIn: '10s'
-  };
-
-  const token = await signAsync({}, configuration.JWT_SECRET, optionsSign);
-
   try {
+    const token = await signAsync({}, configuration.JWT_SECRET, {
+      issuer: configuration.JWT_ISSUER,
+      audience: configuration.JWT_AUDIENCE,
+      expiresIn: '10s'
+    });
+
     const { body, statusCode } = await postAsync({
-      url: `${NETLIFY}/create`,
+      url: `${BASE_URL}/.netlify/functions/create`,
       headers: {
         Authorization: `Bearer ${token}`
       },
@@ -45,9 +43,6 @@ async function create(user, callback) {
 
     callback(null);
   } catch (err) {
-    if (err) {
-      callback(err);
-      return;
-    }
+    callback(err);
   }
 }
