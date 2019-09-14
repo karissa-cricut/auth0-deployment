@@ -7,12 +7,24 @@
 //     callback(new Error("my error message"));
 
 function login(email, password, callback) {
+  const jwt = require('jsonwebtoken@8.5.0');
   const request = require('request@2.81.0');
-  const url = 'https://letsdoauth-api.netlify.com/.netlify/functions/login';
+  const URL = 'https://letsdoauth-api.netlify.com/.netlify/functions/login';
+
+  const optionsSign = {
+    issuer: configuration.JWT_ISSUER,
+    audience: configuration.JWT_AUDIENCE,
+    expiresIn: '10s'
+  };
+
+  const token = jwt.sign({}, configuration.JWT_SECRET, optionsSign);
 
   request.post(
     {
-      url: url,
+      url: URL,
+      headers: {
+        Authorization: `Bearer ${token}`
+      },
       body: {
         email: email,
         password: password

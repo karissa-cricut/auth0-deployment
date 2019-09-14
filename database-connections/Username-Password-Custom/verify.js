@@ -5,12 +5,24 @@
 //     callback(new Error("my error message"));
 
 function verify(email, callback) {
+  const jwt = require('jsonwebtoken@8.5.0');
   const request = require('request@2.81.0');
-  const url = 'https://letsdoauth-api.netlify.com/.netlify/functions/verify';
+  const URL = 'https://letsdoauth-api.netlify.com/.netlify/functions/verify';
+
+  const optionsSign = {
+    issuer: configuration.JWT_ISSUER,
+    audience: configuration.JWT_AUDIENCE,
+    expiresIn: '10s'
+  };
+
+  const token = jwt.sign({}, configuration.JWT_SECRET, optionsSign);
 
   request.patch(
     {
-      url: url,
+      url: URL,
+      headers: {
+        Authorization: `Bearer ${token}`
+      },
       body: {
         email: email
       },
