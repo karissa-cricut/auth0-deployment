@@ -10,8 +10,8 @@ async function changePassword(email, newPassword, callback) {
   const util = require('util');
   const jwt = require('jsonwebtoken@8.5.0');
   const req = require('request@2.81.0');
-  const URL =
-    'https://letsdoauth-api.netlify.com/.netlify/functions/change-password';
+
+  const NETLIFY = 'https://letsdoauth-api.netlify.com/.netlify/functions';
 
   const [patchAsync, signAsync] = [req.patch, jwt.sign].map(util.promisify);
 
@@ -25,7 +25,7 @@ async function changePassword(email, newPassword, callback) {
 
   try {
     const { body, statusCode } = await patchAsync({
-      url: URL,
+      url: `${NETLIFY}/change-password`,
       headers: {
         Authorization: `Bearer ${token}`
       },

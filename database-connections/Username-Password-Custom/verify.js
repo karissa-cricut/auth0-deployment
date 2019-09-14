@@ -8,7 +8,8 @@ async function verify(email, callback) {
   const util = require('util');
   const jwt = require('jsonwebtoken@8.5.0');
   const req = require('request@2.81.0');
-  const URL = 'https://letsdoauth-api.netlify.com/.netlify/functions/verify';
+
+  const NETLIFY = 'https://letsdoauth-api.netlify.com/.netlify/functions';
 
   const [patchAsync, signAsync] = [req.patch, jwt.sign].map(util.promisify);
 
@@ -22,7 +23,7 @@ async function verify(email, callback) {
 
   try {
     const { body, statusCode } = await patchAsync({
-      url: URL,
+      url: `${NETLIFY}/verify`,
       headers: {
         Authorization: `Bearer ${token}`
       },

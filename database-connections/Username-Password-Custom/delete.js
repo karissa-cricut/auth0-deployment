@@ -8,7 +8,8 @@ async function remove(id, callback) {
   const util = require('util');
   const jwt = require('jsonwebtoken@8.5.0');
   const req = require('request@2.81.0');
-  const URL = 'https://letsdoauth-api.netlify.com/.netlify/functions/delete';
+
+  const NETLIFY = 'https://letsdoauth-api.netlify.com/.netlify/functions';
 
   const [deleteAsync, signAsync] = [req.delete, jwt.sign].map(util.promisify);
 
@@ -22,7 +23,7 @@ async function remove(id, callback) {
 
   try {
     const { body, statusCode } = await deleteAsync({
-      url: URL,
+      url: `${NETLIFY}/delete`,
       headers: {
         Authorization: `Bearer ${token}`
       },

@@ -10,7 +10,8 @@ async function getUser(email, callback) {
   const util = require('util');
   const jwt = require('jsonwebtoken@8.5.0');
   const req = require('request@2.81.0');
-  const URL = 'https://letsdoauth-api.netlify.com/.netlify/functions/get-user';
+
+  const NETLIFY = 'https://letsdoauth-api.netlify.com/.netlify/functions';
 
   const [getAsync, signAsync] = [req.get, jwt.sign].map(util.promisify);
 
@@ -24,7 +25,7 @@ async function getUser(email, callback) {
 
   try {
     const { body, statusCode } = await getAsync({
-      url: URL,
+      url: `${NETLIFY}/get-user`,
       headers: {
         Authorization: `Bearer ${token}`
       },
