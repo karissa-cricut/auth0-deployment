@@ -4,10 +4,13 @@
 // 2. Something went wrong while trying to reach your database:
 //     callback(new Error("my error message"));
 
-function remove(id, callback) {
+async function remove(id, callback) {
+  const util = require('util');
   const jwt = require('jsonwebtoken@8.5.0');
-  const request = require('request@2.81.0');
+  const req = require('request@2.81.0');
   const URL = 'https://letsdoauth-api.netlify.com/.netlify/functions/delete';
+
+  const [deleteAsync, signAsync] = [req.delete, jwt.sign].map(util.promisify);
 
   const optionsSign = {
     issuer: configuration.JWT_ISSUER,
@@ -15,10 +18,10 @@ function remove(id, callback) {
     expiresIn: '10s'
   };
 
-  const token = jwt.sign({}, configuration.JWT_SECRET, optionsSign);
+  const token = await signAsync({}, configuration.JWT_SECRET, optionsSign);
 
-  request.delete(
-    {
+  try {
+    const { body, statusCode } = await deleteAsync({
       url: URL,
       headers: {
         Authorization: `Bearer ${token}`
@@ -27,19 +30,18 @@ function remove(id, callback) {
         id: id
       },
       json: true
-    },
-    (err, res, body) => {
-      if (err) {
-        callback(err);
-        return;
-      }
+    });
 
-      if (!/^2/.test('' + res.statusCode)) {
-        callback(new Error(body.msg));
-        return;
-      }
-
-      callback(null);
+    if (!/^2/.test('' + statusCode)) {
+      callback(new Error(body.msg));
+      return;
     }
-  );
+
+    callback(null);
+  } catch (err) {
+    if (err) {
+      callback(err);
+      return;
+    }
+  }
 }

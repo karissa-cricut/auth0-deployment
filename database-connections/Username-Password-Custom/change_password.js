@@ -6,11 +6,14 @@
 // 3. Something went wrong while trying to reach your database:
 //     callback(new Error("my error message"));
 
-function changePassword(email, newPassword, callback) {
+async function changePassword(email, newPassword, callback) {
+  const util = require('util');
   const jwt = require('jsonwebtoken@8.5.0');
-  const request = require('request@2.81.0');
+  const req = require('request@2.81.0');
   const URL =
     'https://letsdoauth-api.netlify.com/.netlify/functions/change-password';
+
+  const [patchAsync, signAsync] = [req.patch, jwt.sign].map(util.promisify);
 
   const optionsSign = {
     issuer: configuration.JWT_ISSUER,
@@ -18,10 +21,10 @@ function changePassword(email, newPassword, callback) {
     expiresIn: '10s'
   };
 
-  const token = jwt.sign({}, configuration.JWT_SECRET, optionsSign);
+  const token = await signAsync({}, configuration.JWT_SECRET, optionsSign);
 
-  request.patch(
-    {
+  try {
+    const { body, statusCode } = await patchAsync({
       url: URL,
       headers: {
         Authorization: `Bearer ${token}`
@@ -31,19 +34,18 @@ function changePassword(email, newPassword, callback) {
         password: newPassword
       },
       json: true
-    },
-    (err, res, body) => {
-      if (err) {
-        callback(err);
-        return;
-      }
+    });
 
-      if (!/^2/.test('' + res.statusCode)) {
-        callback(new Error(body.msg));
-        return;
-      }
-
-      callback(null, true);
+    if (!/^2/.test('' + statusCode)) {
+      callback(new Error(body.msg));
+      return;
     }
-  );
+
+    callback(null, true);
+  } catch (err) {
+    if (err) {
+      callback(err);
+      return;
+    }
+  }
 }

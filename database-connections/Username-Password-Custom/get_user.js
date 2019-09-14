@@ -6,10 +6,13 @@
 // 3. Something went wrong while trying to reach your database:
 //     callback(new Error("my error message"));
 
-function getUser(email, callback) {
+async function getUser(email, callback) {
+  const util = require('util');
   const jwt = require('jsonwebtoken@8.5.0');
-  const request = require('request@2.81.0');
+  const req = require('request@2.81.0');
   const URL = 'https://letsdoauth-api.netlify.com/.netlify/functions/get-user';
+
+  const [getAsync, signAsync] = [req.get, jwt.sign].map(util.promisify);
 
   const optionsSign = {
     issuer: configuration.JWT_ISSUER,
@@ -17,10 +20,10 @@ function getUser(email, callback) {
     expiresIn: '10s'
   };
 
-  const token = jwt.sign({}, configuration.JWT_SECRET, optionsSign);
+  const token = await signAsync({}, configuration.JWT_SECRET, optionsSign);
 
-  request.get(
-    {
+  try {
+    const { body, statusCode } = await getAsync({
       url: URL,
       headers: {
         Authorization: `Bearer ${token}`
@@ -29,29 +32,28 @@ function getUser(email, callback) {
         email: email
       },
       json: true
-    },
-    (err, res, body) => {
-      if (err) {
-        callback(err);
-        return;
-      }
+    });
 
-      if (!/^2/.test('' + res.statusCode)) {
-        callback(new Error(body.msg));
-        return;
-      }
-
-      if (!body) {
-        callback(null);
-        return;
-      }
-
-      const user = {
-        user_id: body._id.toString(),
-        ...body
-      };
-
-      callback(null, user);
+    if (!/^2/.test('' + statusCode)) {
+      callback(new Error(body.msg));
+      return;
     }
-  );
+
+    if (!body) {
+      callback(null);
+      return;
+    }
+
+    const user = {
+      user_id: body._id.toString(),
+      ...body
+    };
+
+    callback(null, user);
+  } catch (err) {
+    if (err) {
+      callback(err);
+      return;
+    }
+  }
 }
