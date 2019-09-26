@@ -72,30 +72,6 @@
     var loginHint = config.extraParams.login_hint;
     var colors = config.colors || {};
 
-    var myPlugin = (function () {
-      var _webAuth;
-      var ctor = function MyPlugIn() {
-        var _this = this;
-        this.args = arguments;
-        this.supports = function (extensibilityPoint) {
-          console.log(extensibilityPoint);
-          return false;
-        };
-        this.init = function () {
-        }
-      };
-      // update version to match auth0.js
-      ctor.version = "9.11.3";
-      ctor.setWebAuth = function (webAuth) {
-        _webAuth = webAuth;
-        var originalLogin = _webAuth.login; _webAuth.login = function (options, cb) {
-          options.realm = config.extraParams.value
-          return originalLogin.call(_webAuth, options, cb);
-        };
-      };
-      return ctor;
-    })();
-
     var lock = new Auth0Lock(config.clientID, config.auth0Domain, {
       auth: {
         redirectUrl: config.callbackURL,
@@ -124,7 +100,6 @@
       defaultADUsernameFromEmailPrefix: true,
 
       // settings below are custom
-      plugins: [myPlugin],
       _enableIdPInitiatedLogin: true,
       connectionResolver: function (username, context, cb) {
         var domain = username.includes('@') && username.split('@')[1];

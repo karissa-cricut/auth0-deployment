@@ -6,7 +6,7 @@
 // 3. Something went wrong while trying to reach your database
 //     callback(new Error("my error message"));
 
-async function login(email, password, context, callback) {
+async function login(email, password, callback) {
   const util = require('util');
   const jwt = require('jsonwebtoken@8.5.0');
   const req = require('request@2.81.0');
