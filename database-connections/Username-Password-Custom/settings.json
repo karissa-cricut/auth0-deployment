@@ -12,6 +12,8 @@
     "password_history": { "enable": false, "size": 5 },
     "password_no_personal_info": { "enable": false },
     "passwordPolicy": "good",
-    "requires_username": false
+    "requires_username": false,
+    "enable_script_context": true,
+    "realm_fallback": true
   }
 }
