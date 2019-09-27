@@ -1,10 +1,10 @@
 // There are three ways this script can finish:
 // 1. The user's password was updated successfully:
-//     callback(null, true);
+//    callback(null, true);
 // 2. The user's password was not updated:
-//     callback(null, false);
+//    callback(null, false);
 // 3. Something went wrong while trying to reach your database:
-//     callback(new Error("my error message"));
+//    callback(new Error("my error message"));
 
 async function changePassword(email, newPassword, callback) {
   const util = require('util');

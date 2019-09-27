@@ -1,8 +1,8 @@
 // There are two ways this script can finish:
 // 1. The user's email was verified successfully
-//     callback(null, true);
+//    callback(null, true);
 // 2. Something went wrong while trying to reach your database:
-//     callback(new Error("my error message"));
+//    callback(new Error("my error message"));
 
 async function verify(email, callback) {
   const util = require('util');

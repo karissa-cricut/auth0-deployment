@@ -1,10 +1,10 @@
 // There are three ways this script can finish:
 // 1. A user was successfully found.
-//     callback(null, profile);
+//    callback(null, profile);
 // 2. A user was not found
-//     callback(null);
+//    callback(null);
 // 3. Something went wrong while trying to reach your database:
-//     callback(new Error("my error message"));
+//    callback(new Error("my error message"));
 
 async function getUser(email, callback) {
   const util = require('util');

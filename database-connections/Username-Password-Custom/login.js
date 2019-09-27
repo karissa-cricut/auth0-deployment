@@ -1,10 +1,10 @@
 // There are three ways this script can finish:
 // 1. The user's credentials are valid.
-//     callback(null, profile);
+//    callback(null, profile);
 // 2. The user's credentials are invalid
-//     callback(new WrongUsernameOrPasswordError(email, "my error message"));
+//    callback(new WrongUsernameOrPasswordError(email, "my error message"));
 // 3. Something went wrong while trying to reach your database
-//     callback(new Error("my error message"));
+//    callback(new Error("my error message"));
 
 async function login(email, password, callback) {
   const util = require('util');

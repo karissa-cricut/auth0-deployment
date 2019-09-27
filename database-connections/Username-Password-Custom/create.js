@@ -1,10 +1,10 @@
 // There are three ways this script can finish:
 // 1. A user was successfully created:
-//     callback(null);
+//    callback(null);
 // 2. This user already exists in your database
-//     callback(new ValidationError("user_exists", "my error message"));
+//    callback(new ValidationError("user_exists", "my error message"));
 // 3. Something went wrong while trying to reach your database:
-//     callback(new Error("my error message"));
+//    callback(new Error("my error message"));
 
 async function create(user, callback) {
   const util = require('util');

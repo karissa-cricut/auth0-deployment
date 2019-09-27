@@ -1,8 +1,8 @@
 // There are two ways this script can finish:
 // 1. The user was removed successfully:
-//     callback(null);
+//    callback(null);
 // 2. Something went wrong while trying to reach your database:
-//     callback(new Error("my error message"));
+//    callback(new Error("my error message"));
 
 async function remove(id, callback) {
   const util = require('util');
