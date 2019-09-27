@@ -13,12 +13,18 @@ async function login(email, password, callback) {
 
   const BASE_URL = 'https://letsdoauth-api.netlify.com';
 
+  const CONFIG = {
+    JWT_AUDIENCE: '##JWT_AUDIENCE##',
+    JWT_ISSUER: '##JWT_ISSUER##',
+    JWT_SECRET: '##JWT_SECRET##'
+  };
+
   const [postAsync, signAsync] = [req.post, jwt.sign].map(util.promisify);
 
   try {
-    const token = await signAsync({}, configuration.JWT_SECRET, {
-      issuer: configuration.JWT_ISSUER,
-      audience: configuration.JWT_AUDIENCE,
+    const token = await signAsync({}, CONFIG.JWT_SECRET, {
+      issuer: CONFIG.JWT_ISSUER,
+      audience: CONFIG.JWT_AUDIENCE,
       expiresIn: '10s'
     });
 

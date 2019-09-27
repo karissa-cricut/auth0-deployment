@@ -1,6 +1,6 @@
 function enrichProfile(user, context, callback) {
-  const FULLCONTACT_KEY = configuration.FULLCONTACT_KEY;
-  const SLACK_WEBHOOK_URL = configuration.SLACK_WEBHOOK_URL;
+  const FULLCONTACT_KEY = '##FULLCONTACT_KEY##';
+  const SLACK_WEBHOOK_URL = '##SLACK_WEBHOOK_URL##';
   const SLACK_CHANNEL = '#demo';
 
   const slack = require('slack-notify@0.1.4')(SLACK_WEBHOOK_URL);

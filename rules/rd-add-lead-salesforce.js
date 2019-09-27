@@ -1,9 +1,9 @@
 function addLeadSalesforce(user, context, callback) {
-  const SF_CLIENT_ID = configuration.SALESFORCE_CLIENT_ID;
-  const SF_CLIENT_SECRET = configuration.SALESFORCE_CLIENT_SECRET;
-  const SF_PASSWORD = configuration.SALESFORCE_PASSWORD;
-  const SF_USERNAME = configuration.SALESFORCE_USERNAME;
-  const SLACK_WEBHOOK_URL = configuration.SLACK_WEBHOOK_URL;
+  const SF_CLIENT_ID = '##SALESFORCE_CLIENT_ID##';
+  const SF_CLIENT_SECRET = '##SALESFORCE_CLIENT_SECRET##';
+  const SF_PASSWORD = '##SALESFORCE_PASSWORD##';
+  const SF_USERNAME = '##SALESFORCE_USERNAME##';
+  const SLACK_WEBHOOK_URL = '##SLACK_WEBHOOK_URL##';
   const SLACK_CHANNEL = '#demo';
 
   const slack = require('slack-notify@0.1.4')(SLACK_WEBHOOK_URL);
