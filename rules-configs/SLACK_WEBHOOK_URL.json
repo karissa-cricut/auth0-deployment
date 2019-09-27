@@ -1,0 +1,4 @@
+{
+  "key": "SLACK_WEBHOOK_URL",
+  "value": "##SLACK_WEBHOOK_URL##"
+}
