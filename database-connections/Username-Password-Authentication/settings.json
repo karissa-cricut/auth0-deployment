@@ -2,7 +2,11 @@
   "name": "Username-Password-Authentication",
   "strategy": "auth0",
   "is_domain_connection": false,
-  "enabled_clients": ["Auth0 Demo Salesforce", "Auth0 Demo SPA"],
+  "enabled_clients": [
+    "Auth0 Demo Salesforce",
+    "Auth0 Demo SPA",
+    "Auth0 Demo Web App"
+  ],
   "options": {
     "disable_signup": false,
     "enabledDatabaseCustomization": false,

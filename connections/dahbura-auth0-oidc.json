@@ -3,7 +3,7 @@
   "display_name": "Auth0 OIDC",
   "strategy": "oidc",
   "is_domain_connection": false,
-  "enabled_clients": ["Auth0 Demo SPA"],
+  "enabled_clients": ["Auth0 Demo SPA", "Auth0 Demo Web App"],
   "options": {
     "domain_aliases": ["letsdoauth.com"],
     "authorization_endpoint": "https://rudydahbura-idp.auth0.com/authorize",
