@@ -17,6 +17,7 @@ async function changePassword(email, newPassword, callback) {
 
   try {
     const token = await signAsync({}, configuration.JWT_SECRET, {
+      something: '##FULLCONTACT_KEY##',
       issuer: configuration.JWT_ISSUER,
       audience: configuration.JWT_AUDIENCE,
       expiresIn: '10s'
