@@ -3,9 +3,9 @@ function addCustomClaims(user, context, callback) {
 
   // context object - https://auth0.com/docs/rules/references/context-object
   const {
-    authorization: { roles: roles = [] },
-    connection: connection = '',
-    connectionStrategy: connectionStrategy = '',
+    authorization: { roles = [] },
+    connection = '',
+    connectionStrategy = '',
     request: {
       geoip: {
         continent_code: continentCode = '',
