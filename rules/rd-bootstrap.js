@@ -1,6 +1,13 @@
 function boostrap(user, context, callback) {
   const ManagementClient = require('auth0@2.17.0').ManagementClient;
 
+  // Limit access to the following audience, client credentials exchange only.
+  const { audience = '' } = context.request.query;
+  if (audience === 'https://rudydahbura.auth0.com/api/v2/') {
+    callback(new UnauthorizedError('Cannot access protected API.'));
+    return;
+  }
+
   // prettier-ignore
   global.management = global.management || new ManagementClient({
       domain: auth0.domain,
