@@ -20,16 +20,16 @@ async function verify(email, callback) {
   const [patchAsync, signAsync] = [req.patch, jwt.sign].map(util.promisify);
 
   try {
-    const token = await signAsync({}, CONFIG.JWT_SECRET, {
+    const jwt = await signAsync({}, CONFIG.JWT_SECRET, {
       issuer: CONFIG.JWT_ISSUER,
       audience: CONFIG.JWT_AUDIENCE,
-      expiresIn: '10s'
+      expiresIn: 10
     });
 
     const { body, statusCode } = await patchAsync({
       url: `${BASE_URL}/.netlify/functions/verify`,
       headers: {
-        Authorization: `Bearer ${token}`
+        Authorization: `Bearer ${jwt}`
       },
       body: {
         email: email
