@@ -42,11 +42,6 @@ async function create(user, callback) {
       return;
     }
 
-    const user = {
-      user_id: body._id.toString(),
-      ...body
-    };
-
     callback(null);
   } catch (err) {
     callback(err);
