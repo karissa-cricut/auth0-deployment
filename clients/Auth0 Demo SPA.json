@@ -8,14 +8,17 @@
   "callbacks": [
     "https://localhost:3000",
     "https://localhost:3000/callback-idp",
-    "https://letsdoauth.netlify.com",
-    "https://letsdoauth.netlify.com/callback-idp"
+    "https://letsdoauth-app.herokuapp.com",
+    "https://letsdoauth-app.herokuapp.com/callback-idp"
   ],
-  "initiate_login_uri": "https://letsdoauth.netlify.com/login",
-  "web_origins": ["https://localhost:3000", "https://letsdoauth.netlify.com"],
+  "initiate_login_uri": "https://letsdoauth-app.herokuapp.com/login",
+  "web_origins": [
+    "https://localhost:3000",
+    "https://letsdoauth-app.herokuapp.com"
+  ],
   "allowed_logout_urls": [
     "https://localhost:3000",
-    "https://letsdoauth.netlify.com"
+    "https://letsdoauth-app.herokuapp.com"
   ],
   "allowed_origins": [],
   "jwt_configuration": {
