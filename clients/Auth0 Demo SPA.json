@@ -7,9 +7,7 @@
   "token_endpoint_auth_method": "none",
   "callbacks": [
     "https://localhost:3000",
-    "https://localhost:3000/callback-idp",
-    "https://letsdoauth-app.herokuapp.com",
-    "https://letsdoauth-app.herokuapp.com/callback-idp"
+    "https://letsdoauth-app.herokuapp.com"
   ],
   "initiate_login_uri": "https://letsdoauth-app.herokuapp.com/login",
   "web_origins": [
