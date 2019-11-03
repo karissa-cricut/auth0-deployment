@@ -15,7 +15,7 @@ async function create(user, callback) {
   const [postAsync] = [req.post].map(util.promisify);
 
   try {
-    const jwt = await createJwt();
+    const jwt = await requestJwt();
 
     const { body, statusCode } = await postAsync({
       url: `${BASE_URL}/api/custom-db/create`,
@@ -36,7 +36,7 @@ async function create(user, callback) {
     callback(err);
   }
 
-  async function createJwt() {
+  async function requestJwt() {
     const CONFIG = {
       AUTH0_DOMAIN: '##AUTH0_DOMAIN##',
       JWT_AUDIENCE: '##JWT_AUDIENCE##',

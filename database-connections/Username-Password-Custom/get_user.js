@@ -15,7 +15,7 @@ async function getUser(email, callback) {
   const [getAsync, postAsync] = [req.get, req.post].map(util.promisify);
 
   try {
-    const jwt = await createJwt();
+    const jwt = await requestJwt();
 
     const { body, statusCode } = await getAsync({
       url: `${BASE_URL}/api/custom-db/get-user`,
@@ -48,7 +48,7 @@ async function getUser(email, callback) {
     callback(err);
   }
 
-  async function createJwt() {
+  async function requestJwt() {
     const CONFIG = {
       AUTH0_DOMAIN: '##AUTH0_DOMAIN##',
       JWT_AUDIENCE: '##JWT_AUDIENCE##',

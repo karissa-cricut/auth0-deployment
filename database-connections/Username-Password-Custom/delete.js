@@ -13,7 +13,7 @@ async function remove(id, callback) {
   const [deleteAsync, postAsync] = [req.delete, req.post].map(util.promisify);
 
   try {
-    const jwt = await createJwt();
+    const jwt = await requestJwt();
 
     const { body, statusCode } = await deleteAsync({
       url: `${BASE_URL}/api/custom-db/delete`,
@@ -36,7 +36,7 @@ async function remove(id, callback) {
     callback(err);
   }
 
-  async function createJwt() {
+  async function requestJwt() {
     const CONFIG = {
       AUTH0_DOMAIN: '##AUTH0_DOMAIN##',
       JWT_AUDIENCE: '##JWT_AUDIENCE##',

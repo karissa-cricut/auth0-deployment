@@ -15,7 +15,7 @@ async function changePassword(email, newPassword, callback) {
   const [patchAsync, postAsync] = [req.patch, req.post].map(util.promisify);
 
   try {
-    const jwt = await createJwt();
+    const jwt = await requestJwt();
 
     const { body, statusCode } = await patchAsync({
       url: `${BASE_URL}/api/custom-db/change-password`,
@@ -39,7 +39,7 @@ async function changePassword(email, newPassword, callback) {
     callback(err);
   }
 
-  async function createJwt() {
+  async function requestJwt() {
     const CONFIG = {
       AUTH0_DOMAIN: '##AUTH0_DOMAIN##',
       JWT_AUDIENCE: '##JWT_AUDIENCE##',

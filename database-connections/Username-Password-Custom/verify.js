@@ -13,7 +13,7 @@ async function verify(email, callback) {
   const [patchAsync, postAsync] = [req.patch, req.post].map(util.promisify);
 
   try {
-    const jwt = await createJwt();
+    const jwt = await requestJwt();
 
     const { body, statusCode } = await patchAsync({
       url: `${BASE_URL}/api/custom-db/verify`,
@@ -36,7 +36,7 @@ async function verify(email, callback) {
     callback(err);
   }
 
-  async function createJwt() {
+  async function requestJwt() {
     const CONFIG = {
       AUTH0_DOMAIN: '##AUTH0_DOMAIN##',
       JWT_AUDIENCE: '##JWT_AUDIENCE##',
