@@ -12,7 +12,7 @@ async function getUser(email, callback) {
 
   const BASE_URL = 'https://letsdoauth-api.herokuapp.com';
 
-  const [getAsync] = [req.get].map(util.promisify);
+  const [getAsync, postAsync] = [req.get, req.post].map(util.promisify);
 
   try {
     const jwt = await createJwt();

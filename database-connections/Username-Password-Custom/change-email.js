@@ -12,7 +12,7 @@ async function changeEmail(email, newEmail, verified, callback) {
 
   const BASE_URL = 'https://letsdoauth-api.herokuapp.com';
 
-  const [patchAsync] = [req.patch].map(util.promisify);
+  const [patchAsync, postAsync] = [req.patch, req.post].map(util.promisify);
 
   try {
     const jwt = await createJwt();

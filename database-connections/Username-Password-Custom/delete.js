@@ -10,7 +10,7 @@ async function remove(id, callback) {
 
   const BASE_URL = 'https://letsdoauth-api.herokuapp.com';
 
-  const [deleteAsync] = [req.delete].map(util.promisify);
+  const [deleteAsync, postAsync] = [req.delete, req.post].map(util.promisify);
 
   try {
     const jwt = await createJwt();
