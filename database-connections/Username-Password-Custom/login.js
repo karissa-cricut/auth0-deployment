@@ -11,7 +11,7 @@ async function login(email, password, callback) {
   const jwt = require('jsonwebtoken@8.5.0');
   const req = require('request@2.81.0');
 
-  const BASE_URL = 'https://letsdoauth-api.netlify.com';
+  const BASE_URL = 'https://letsdoauth-api.herokuapps.com';
 
   const CONFIG = {
     JWT_AUDIENCE: '##JWT_AUDIENCE##',
@@ -29,7 +29,7 @@ async function login(email, password, callback) {
     });
 
     const { body, statusCode } = await postAsync({
-      url: `${BASE_URL}/.netlify/functions/login`,
+      url: `${BASE_URL}/api/custom-db/login`,
       headers: {
         Authorization: `Bearer ${jwt}`
       },

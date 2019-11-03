@@ -11,7 +11,7 @@ async function changePassword(email, newPassword, callback) {
   const jwt = require('jsonwebtoken@8.5.0');
   const req = require('request@2.81.0');
 
-  const BASE_URL = 'https://letsdoauth-api.netlify.com';
+  const BASE_URL = 'https://letsdoauth-api.herokuapps.com';
 
   const CONFIG = {
     JWT_AUDIENCE: '##JWT_AUDIENCE##',
@@ -29,7 +29,7 @@ async function changePassword(email, newPassword, callback) {
     });
 
     const { body, statusCode } = await patchAsync({
-      url: `${BASE_URL}/.netlify/functions/change-password`,
+      url: `${BASE_URL}/api/custom-db/change-password`,
       headers: {
         Authorization: `Bearer ${jwt}`
       },

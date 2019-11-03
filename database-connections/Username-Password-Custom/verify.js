@@ -9,7 +9,7 @@ async function verify(email, callback) {
   const jwt = require('jsonwebtoken@8.5.0');
   const req = require('request@2.81.0');
 
-  const BASE_URL = 'https://letsdoauth-api.netlify.com';
+  const BASE_URL = 'https://letsdoauth-api.herokuapps.com';
 
   const CONFIG = {
     JWT_AUDIENCE: '##JWT_AUDIENCE##',
@@ -27,7 +27,7 @@ async function verify(email, callback) {
     });
 
     const { body, statusCode } = await patchAsync({
-      url: `${BASE_URL}/.netlify/functions/verify`,
+      url: `${BASE_URL}/api/custom-db/verify`,
       headers: {
         Authorization: `Bearer ${jwt}`
       },
