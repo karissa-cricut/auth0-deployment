@@ -8,25 +8,14 @@
 
 async function changePassword(email, newPassword, callback) {
   const util = require('util');
-  const jwt = require('jsonwebtoken@8.5.0');
   const req = require('request@2.81.0');
 
   const BASE_URL = 'https://letsdoauth-api.herokuapp.com';
 
-  const CONFIG = {
-    JWT_AUDIENCE: '##JWT_AUDIENCE##',
-    JWT_ISSUER: '##JWT_ISSUER##',
-    JWT_SECRET: '##JWT_SECRET##'
-  };
-
-  const [patchAsync, signAsync] = [req.patch, jwt.sign].map(util.promisify);
+  const [patchAsync] = [req.patch].map(util.promisify);
 
   try {
-    const jwt = await signAsync({}, CONFIG.JWT_SECRET, {
-      issuer: CONFIG.JWT_ISSUER,
-      audience: CONFIG.JWT_AUDIENCE,
-      expiresIn: 10
-    });
+    const jwt = await createJwt();
 
     const { body, statusCode } = await patchAsync({
       url: `${BASE_URL}/api/custom-db/change-password`,
@@ -48,5 +37,27 @@ async function changePassword(email, newPassword, callback) {
     callback(null, true);
   } catch (err) {
     callback(err);
+  }
+
+  async function createJwt() {
+    const CONFIG = {
+      AUTH0_DOMAIN: '##AUTH0_DOMAIN##',
+      JWT_AUDIENCE: '##JWT_AUDIENCE##',
+      JWT_CLIENT_ID: '##JWT_CLIENT_ID##',
+      JWT_CLIENT_SECRET: '##JWT_CLIENT_SECRET##'
+    };
+
+    const { body, statusCode } = await postAsync({
+      url: `https://${CONFIG.AUTH0_DOMAIN}/oauth/token`,
+      body: {
+        grant_type: 'client_credentials',
+        client_id: CONFIG.JWT_CLIENT_ID,
+        client_secret: CONFIG.JWT_CLIENT_SECRET,
+        audience: CONFIG.JWT_AUDIENCE
+      },
+      json: true
+    });
+
+    return body.access_token;
   }
 }

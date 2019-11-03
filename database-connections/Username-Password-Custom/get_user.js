@@ -8,25 +8,14 @@
 
 async function getUser(email, callback) {
   const util = require('util');
-  const jwt = require('jsonwebtoken@8.5.0');
   const req = require('request@2.81.0');
 
   const BASE_URL = 'https://letsdoauth-api.herokuapp.com';
 
-  const CONFIG = {
-    JWT_AUDIENCE: '##JWT_AUDIENCE##',
-    JWT_ISSUER: '##JWT_ISSUER##',
-    JWT_SECRET: '##JWT_SECRET##'
-  };
-
-  const [getAsync, signAsync] = [req.get, jwt.sign].map(util.promisify);
+  const [getAsync] = [req.get].map(util.promisify);
 
   try {
-    const jwt = await signAsync({}, CONFIG.JWT_SECRET, {
-      issuer: CONFIG.JWT_ISSUER,
-      audience: CONFIG.JWT_AUDIENCE,
-      expiresIn: 10
-    });
+    const jwt = await createJwt();
 
     const { body, statusCode } = await getAsync({
       url: `${BASE_URL}/api/custom-db/get-user`,
@@ -57,5 +46,27 @@ async function getUser(email, callback) {
     callback(null, user);
   } catch (err) {
     callback(err);
+  }
+
+  async function createJwt() {
+    const CONFIG = {
+      AUTH0_DOMAIN: '##AUTH0_DOMAIN##',
+      JWT_AUDIENCE: '##JWT_AUDIENCE##',
+      JWT_CLIENT_ID: '##JWT_CLIENT_ID##',
+      JWT_CLIENT_SECRET: '##JWT_CLIENT_SECRET##'
+    };
+
+    const { body, statusCode } = await postAsync({
+      url: `https://${CONFIG.AUTH0_DOMAIN}/oauth/token`,
+      body: {
+        grant_type: 'client_credentials',
+        client_id: CONFIG.JWT_CLIENT_ID,
+        client_secret: CONFIG.JWT_CLIENT_SECRET,
+        audience: CONFIG.JWT_AUDIENCE
+      },
+      json: true
+    });
+
+    return body.access_token;
   }
 }

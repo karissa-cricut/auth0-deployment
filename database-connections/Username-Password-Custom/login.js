@@ -8,12 +8,11 @@
 
 async function login(email, password, callback) {
   const util = require('util');
-  const jwt = require('jsonwebtoken@8.5.0');
   const req = require('request@2.81.0');
 
   const BASE_URL = 'https://letsdoauth-api.herokuapp.com';
 
-  const [postAsync, signAsync] = [req.post, jwt.sign].map(util.promisify);
+  const [postAsync] = [req.post].map(util.promisify);
 
   try {
     const jwt = await createJwt();
