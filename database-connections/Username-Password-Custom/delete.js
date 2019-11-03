@@ -9,7 +9,7 @@ async function remove(id, callback) {
   const jwt = require('jsonwebtoken@8.5.0');
   const req = require('request@2.81.0');
 
-  const BASE_URL = 'https://letsdoauth-api.herokuapps.com';
+  const BASE_URL = 'https://letsdoauth-api.herokuapp.com';
 
   const CONFIG = {
     JWT_AUDIENCE: '##JWT_AUDIENCE##',
