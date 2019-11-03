@@ -13,13 +13,6 @@ async function login(email, password, callback) {
 
   const BASE_URL = 'https://letsdoauth-api.herokuapp.com';
 
-  const CONFIG = {
-    AUTH0_DOMAIN: '##AUTH0_DOMAIN##',
-    JWT_AUDIENCE: '##JWT_AUDIENCE##',
-    JWT_CLIENT_ID: '##JWT_CLIENT_ID##',
-    JWT_CLIENT_SECRET: '##JWT_CLIENT_SECRET##'
-  };
-
   const [postAsync, signAsync] = [req.post, jwt.sign].map(util.promisify);
 
   try {
@@ -53,12 +46,16 @@ async function login(email, password, callback) {
   }
 
   async function createJwt() {
+    const CONFIG = {
+      AUTH0_DOMAIN: '##AUTH0_DOMAIN##',
+      JWT_AUDIENCE: '##JWT_AUDIENCE##',
+      JWT_CLIENT_ID: '##JWT_CLIENT_ID##',
+      JWT_CLIENT_SECRET: '##JWT_CLIENT_SECRET##'
+    };
+
     const { body, statusCode } = await postAsync({
       url: `https://${CONFIG.AUTH0_DOMAIN}/oauth/token`,
-      headers: {
-        'content-type': 'application/x-www-form-urlencoded'
-      },
-      form: {
+      body: {
         grant_type: 'client_credentials',
         client_id: CONFIG.JWT_CLIENT_ID,
         client_secret: CONFIG.JWT_CLIENT_SECRET,
@@ -66,8 +63,6 @@ async function login(email, password, callback) {
       },
       json: true
     });
-
-    console.log(body);
 
     return body.access_token;
   }
