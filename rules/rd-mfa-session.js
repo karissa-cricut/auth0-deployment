@@ -1,7 +1,7 @@
 function multiFactorSession(user, context, callback) {
   const MFA_CLIENTS = [
-    'lsHbUXlIE1d8SLWgOZBCfBL8SbmRCRc-',
-    'pjpZ6NSU6rOTMpdhEJmKzCRUqvKeVVrP'
+    'cAssYWZD28Ke29v0T3rn79wgwtpsucBF',
+    'lsHbUXlIE1d8SLWgOZBCfBL8SbmRCRc-'
   ];
 
   if (!MFA_CLIENTS.includes(context.clientID)) {

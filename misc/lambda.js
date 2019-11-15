@@ -7,7 +7,7 @@ exports.handler = async (event, context) => {
 
   const o = {
     'frame-ancestors': [
-      'https://localhost:3000',
+      'http://localhost:3000',
       'https://letsdoauth-app.herokuapp.com'
     ],
     'default-src': ["'self'", 'https://rudydahbura.guardian.auth0.com'],
@@ -37,7 +37,7 @@ exports.handler = async (event, context) => {
     {
       key: 'X-Frame-Options',
       value:
-        'allow-from https://localhost:3000 https://letsdoauth-app.herokuapp.com'
+        'allow-from http://localhost:3000 https://letsdoauth-app.herokuapp.com'
     }
   ];
 

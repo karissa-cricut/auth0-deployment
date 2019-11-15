@@ -5,9 +5,9 @@
   "is_first_party": true,
   "app_type": "regular_web",
   "token_endpoint_auth_method": "client_secret_post",
-  "callbacks": ["http://localhost:3000/callback"],
-  "web_origins": ["http://localhost:3000"],
-  "allowed_logout_urls": ["http://localhost:3000"],
+  "callbacks": ["http://localhost:3080/callback"],
+  "web_origins": ["http://localhost:3080"],
+  "allowed_logout_urls": ["http://localhost:3080"],
   "allowed_origins": [],
   "jwt_configuration": {
     "alg": "RS256",
