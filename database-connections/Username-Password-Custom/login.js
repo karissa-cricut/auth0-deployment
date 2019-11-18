@@ -18,7 +18,7 @@ async function login(email, password, callback) {
     const jwt = await requestJwt();
 
     const { body, statusCode } = await postAsync({
-      url: `${BASE_URL}/api/database/users/${email}/login`,
+      url: `${BASE_URL}/api/databases/users/${email}/login`,
       headers: {
         Authorization: `Bearer ${jwt}`
       },

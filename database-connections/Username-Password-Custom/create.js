@@ -18,7 +18,7 @@ async function create(user, callback) {
     const jwt = await requestJwt();
 
     const { body, statusCode } = await postAsync({
-      url: `${BASE_URL}/api/database/users`,
+      url: `${BASE_URL}/api/databases/users`,
       headers: {
         Authorization: `Bearer ${jwt}`
       },

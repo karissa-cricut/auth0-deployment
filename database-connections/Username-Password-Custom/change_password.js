@@ -18,7 +18,7 @@ async function changePassword(email, newPassword, callback) {
     const jwt = await requestJwt();
 
     const { body, statusCode } = await patchAsync({
-      url: `${BASE_URL}/api/database/users/${email}/password`,
+      url: `${BASE_URL}/api/databases/users/${email}/password`,
       headers: {
         Authorization: `Bearer ${jwt}`
       },
