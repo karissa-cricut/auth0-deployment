@@ -18,12 +18,11 @@ async function changePassword(email, newPassword, callback) {
     const jwt = await requestJwt();
 
     const { body, statusCode } = await patchAsync({
-      url: `${BASE_URL}/api/custom-db/change-password`,
+      url: `${BASE_URL}/api/database/users/${email}/password`,
       headers: {
         Authorization: `Bearer ${jwt}`
       },
       body: {
-        email: email,
         password: newPassword
       },
       json: true

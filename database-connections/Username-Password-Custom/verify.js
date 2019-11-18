@@ -16,7 +16,7 @@ async function verify(email, callback) {
     const jwt = await requestJwt();
 
     const { body, statusCode } = await patchAsync({
-      url: `${BASE_URL}/api/custom-db/verify`,
+      url: `${BASE_URL}/api/database/users/${email}/verify`,
       headers: {
         Authorization: `Bearer ${jwt}`
       },

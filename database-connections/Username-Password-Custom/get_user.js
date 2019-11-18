@@ -18,12 +18,9 @@ async function getUser(email, callback) {
     const jwt = await requestJwt();
 
     const { body, statusCode } = await getAsync({
-      url: `${BASE_URL}/api/custom-db/get-user`,
+      url: `${BASE_URL}/api/database/users/${email}`,
       headers: {
         Authorization: `Bearer ${jwt}`
-      },
-      qs: {
-        email: email
       },
       json: true
     });

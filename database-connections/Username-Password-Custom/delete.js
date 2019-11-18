@@ -16,12 +16,9 @@ async function remove(id, callback) {
     const jwt = await requestJwt();
 
     const { body, statusCode } = await deleteAsync({
-      url: `${BASE_URL}/api/custom-db/delete`,
+      url: `${BASE_URL}/api/database/users/${id}`,
       headers: {
         Authorization: `Bearer ${jwt}`
-      },
-      body: {
-        id: id
       },
       json: true
     });

@@ -18,12 +18,11 @@ async function changeEmail(email, newEmail, verified, callback) {
     const jwt = await requestJwt();
 
     const { body, statusCode } = await patchAsync({
-      url: `${BASE_URL}/api/custom-db/change-email`,
+      url: `${BASE_URL}/api/database/users/${email}/email`,
       headers: {
         Authorization: `Bearer ${jwt}`
       },
       body: {
-        email: email,
         newEmail: newEmail,
         verified: verified
       },
