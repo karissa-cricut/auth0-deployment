@@ -9,18 +9,18 @@
     "http://localhost:3000",
     "http://localhost:3000/callback",
     "http://localhost:3000/callback-idp",
-    "https://letsdoauth-app.herokuapp.com",
-    "https://letsdoauth-app.herokuapp.com/callback",
-    "https://letsdoauth-app.herokuapp.com/callback-idp"
+    "https://letsdoauth-spa.herokuapp.com",
+    "https://letsdoauth-spa.herokuapp.com/callback",
+    "https://letsdoauth-spa.herokuapp.com/callback-idp"
   ],
-  "initiate_login_uri": "https://letsdoauth-app.herokuapp.com/login",
+  "initiate_login_uri": "https://letsdoauth-spa.herokuapp.com/login",
   "web_origins": [
     "http://localhost:3000",
-    "https://letsdoauth-app.herokuapp.com"
+    "https://letsdoauth-spa.herokuapp.com"
   ],
   "allowed_logout_urls": [
     "http://localhost:3000",
-    "https://letsdoauth-app.herokuapp.com"
+    "https://letsdoauth-spa.herokuapp.com"
   ],
   "allowed_origins": [],
   "jwt_configuration": {
