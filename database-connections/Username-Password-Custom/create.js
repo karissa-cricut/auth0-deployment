@@ -27,7 +27,7 @@ async function create(user, callback) {
     });
 
     if (!/^2/.test('' + statusCode)) {
-      callback(new Error(body.msg));
+      callback(new Error(body.message));
       return;
     }
 
