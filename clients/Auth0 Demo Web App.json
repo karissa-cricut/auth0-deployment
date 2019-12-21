@@ -6,11 +6,11 @@
   "app_type": "regular_web",
   "token_endpoint_auth_method": "client_secret_post",
   "callbacks": [
-    "http://localhost:3080/callback",
-    "http://localhost:3080/callback-popup"
+    "http://localhost:4000/callback",
+    "http://localhost:4000/callback-popup"
   ],
-  "web_origins": ["http://localhost:3080"],
-  "allowed_logout_urls": ["http://localhost:3080"],
+  "web_origins": ["http://localhost:4000"],
+  "allowed_logout_urls": ["http://localhost:4000"],
   "allowed_origins": [],
   "jwt_configuration": {
     "alg": "RS256",
