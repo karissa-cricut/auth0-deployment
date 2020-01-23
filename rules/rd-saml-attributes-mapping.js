@@ -15,8 +15,6 @@ function samlAttributesMapping(user, context, callback) {
   context.samlConfiguration.passthroughClaimsWithNoMapping = false;
 
   context.samlConfiguration.mappings = {
-    'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/food':
-      'user_metadata.favorite_food',
     'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier':
       'email'
   };
