@@ -1,4 +1,4 @@
-function samlAttributesMapping(user, context, callback) {
+function samlSalesforceConfig(user, context, callback) {
   const AUDIENCE = 'https://rudydahbura-dev-ed.my.salesforce.com';
   const CLIENTS = ['eO16DYGJUOCphUCPiJ70jJGySPEv6gpK'];
 
