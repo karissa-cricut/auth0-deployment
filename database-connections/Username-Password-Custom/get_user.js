@@ -20,8 +20,7 @@ async function getUser(email, callback) {
     const response = await fetch(url, {
       method: 'GET',
       headers: {
-        Authorization: `Bearer ${jwt}`,
-        'Content-Type': 'application/json'
+        Authorization: `Bearer ${jwt}`
       }
     });
 

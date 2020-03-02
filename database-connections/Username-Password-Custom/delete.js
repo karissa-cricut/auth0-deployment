@@ -18,8 +18,7 @@ async function remove(id, callback) {
     const response = await fetch(url, {
       method: 'DELETE',
       headers: {
-        Authorization: `Bearer ${jwt}`,
-        'Content-Type': 'application/json'
+        Authorization: `Bearer ${jwt}`
       }
     });
 
