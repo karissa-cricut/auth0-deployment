@@ -24,11 +24,12 @@ async function getUser(email, callback) {
       }
     });
 
-    const body = await response.json();
+    const body = await response.text();
     const statusCode = response.status;
 
     if (!/^2/.test('' + statusCode)) {
-      callback(new Error(body.message));
+      const error = JSON.parse(body);
+      callback(new Error(error.message));
       return;
     }
 
@@ -37,10 +38,8 @@ async function getUser(email, callback) {
       return;
     }
 
-    const user = {
-      user_id: body._id.toString(),
-      ...body
-    };
+    const user = JSON.parse(body);
+    user.user_id = user._id.toString();
 
     callback(null, user);
   } catch (err) {

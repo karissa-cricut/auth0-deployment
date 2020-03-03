@@ -22,11 +22,12 @@ async function remove(id, callback) {
       }
     });
 
+    const body = await response.text();
     const statusCode = response.status;
 
     if (!/^2/.test('' + statusCode)) {
-      const body = await response.json();
-      callback(new Error(body.message));
+      const error = JSON.parse(body);
+      callback(new Error(error.message));
       return;
     }
 
