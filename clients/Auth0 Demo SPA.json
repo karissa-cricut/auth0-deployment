@@ -2,7 +2,7 @@
   "name": "Auth0 Demo SPA",
   "description": "Auth0 / React SPA demonstration application.",
   "logo_uri": "",
-  "is_first_party": false,
+  "is_first_party": true,
   "app_type": "spa",
   "token_endpoint_auth_method": "none",
   "callbacks": [
