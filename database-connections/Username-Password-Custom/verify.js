@@ -63,7 +63,6 @@ async function verify(email, callback) {
     });
 
     const body = await response.json();
-    const statusCode = response.status;
 
     return body.access_token;
   }

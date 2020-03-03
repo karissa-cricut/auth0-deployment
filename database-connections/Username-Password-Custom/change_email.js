@@ -66,7 +66,6 @@ async function changeEmail(email, newEmail, verified, callback) {
     });
 
     const body = await response.json();
-    const statusCode = response.status;
 
     return body.access_token;
   }
