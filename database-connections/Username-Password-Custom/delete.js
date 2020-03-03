@@ -15,17 +15,16 @@ async function remove(id, callback) {
 
     const url = new URL(`${BASE_URL}/api/databases/users/${id}`);
 
-    const response = await fetch(url, {
+    const res = await fetch(url, {
       method: 'DELETE',
       headers: {
         Authorization: `Bearer ${jwt}`
       }
     });
 
-    const body = await response.text();
-    const statusCode = response.status;
+    const body = await res.text();
 
-    if (!/^2/.test('' + statusCode)) {
+    if (!res.ok) {
       const error = JSON.parse(body);
       callback(new Error(error.message));
       return;
@@ -46,7 +45,7 @@ async function remove(id, callback) {
 
     const url = new URL(`https://${CONFIG.AUTH0_DOMAIN}/oauth/token`);
 
-    const response = await fetch(url, {
+    const res = await fetch(url, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -59,7 +58,7 @@ async function remove(id, callback) {
       })
     });
 
-    const body = await response.json();
+    const body = await res.json();
 
     return body.access_token;
   }

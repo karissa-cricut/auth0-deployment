@@ -17,7 +17,7 @@ async function login(email, password, callback) {
 
     const url = new URL(`${BASE_URL}/api/databases/users/${email}/login`);
 
-    const response = await fetch(url, {
+    const res = await fetch(url, {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${jwt}`,
@@ -28,18 +28,16 @@ async function login(email, password, callback) {
       })
     });
 
-    const body = await response.json();
-    const statusCode = response.status;
+    const body = await res.text();
 
-    if (!/^2/.test('' + statusCode)) {
-      callback(new Error(body.message));
+    if (!res.ok) {
+      const error = JSON.parse(body);
+      callback(new Error(error.message));
       return;
     }
 
-    const user = {
-      user_id: body._id.toString(),
-      ...body
-    };
+    const user = JSON.parse(body);
+    user.user_id = user._id.toString();
 
     callback(null, user);
   } catch (err) {
@@ -56,7 +54,7 @@ async function login(email, password, callback) {
 
     const url = new URL(`https://${CONFIG.AUTH0_DOMAIN}/oauth/token`);
 
-    const response = await fetch(url, {
+    const res = await fetch(url, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -69,7 +67,7 @@ async function login(email, password, callback) {
       })
     });
 
-    const body = await response.json();
+    const body = await res.json();
 
     return body.access_token;
   }

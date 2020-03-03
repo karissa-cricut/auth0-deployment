@@ -17,7 +17,7 @@ async function changeEmail(email, newEmail, verified, callback) {
 
     const url = new URL(`${BASE_URL}/api/databases/users/${email}/email`);
 
-    const response = await fetch(url, {
+    const res = await fetch(url, {
       method: 'PATCH',
       headers: {
         Authorization: `Bearer ${jwt}`,
@@ -29,11 +29,11 @@ async function changeEmail(email, newEmail, verified, callback) {
       })
     });
 
-    const body = await response.json();
-    const statusCode = response.status;
+    const body = await res.text();
 
-    if (!/^2/.test('' + statusCode)) {
-      callback(new Error(body.message));
+    if (!res.ok) {
+      const error = JSON.parse(body);
+      callback(new Error(error.message));
       return;
     }
 
@@ -52,7 +52,7 @@ async function changeEmail(email, newEmail, verified, callback) {
 
     const url = new URL(`https://${CONFIG.AUTH0_DOMAIN}/oauth/token`);
 
-    const response = await fetch(url, {
+    const res = await fetch(url, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -65,7 +65,7 @@ async function changeEmail(email, newEmail, verified, callback) {
       })
     });
 
-    const body = await response.json();
+    const body = await res.json();
 
     return body.access_token;
   }
