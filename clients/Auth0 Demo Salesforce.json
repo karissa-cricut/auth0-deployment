@@ -24,6 +24,14 @@
     "client_credentials"
   ],
   "addons": {
-    "samlp": {}
+    "samlp": {
+      "mappings": {
+        "email": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier"
+      },
+      "audience": "https://rudydahbura-dev-ed.my.salesforce.com",
+      "mapIdentities": false,
+      "mapUnknownClaimsAsIs": false,
+      "passthroughClaimsWithNoMapping": true
+    }
   }
 }
