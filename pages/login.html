@@ -112,16 +112,6 @@
 
         // settings below are custom
         _enableIdPInitiatedLogin: true,
-        connectionResolver: function(username, context, cb) {
-          var domain = username.includes('@') && username.split('@')[1];
-          if (domain) {
-            // Use a custom approach to figure out the connection
-            cb({ type: 'database', name: domain });
-          } else {
-            // Use the default approach to figure out the connection
-            cb(null);
-          }
-        },
         initialScreen:
           config.extraParams.screen_hint === 'signup' ? 'signUp' : 'login',
         mustAcceptTerms: true,
