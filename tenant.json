@@ -1,0 +1,25 @@
+{
+  "default_audience": "",
+  "default_directory": "",
+  "enabled_locales": ["en"],
+  "flags": {
+    "enable_client_connections": false,
+    "enable_custom_domain_in_emails": true,
+    "enable_public_signup_user_exists_error": false,
+    "new_universal_login_experience_enabled": true,
+    "universal_login": true,
+    "disable_clickjack_protection_headers": false,
+    "enable_mgmt_api_v1": false
+  },
+  "friendly_name": "",
+  "idle_session_lifetime": 72,
+  "session_lifetime": 168,
+  "support_email": "",
+  "support_url": "",
+  "universal_login": {
+    "colors": {
+      "page_background": "#333",
+      "primary": "#EA5323"
+    }
+  }
+}
