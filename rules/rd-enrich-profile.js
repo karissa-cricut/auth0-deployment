@@ -7,7 +7,7 @@ function enrichProfile(user, context, callback) {
 
   user.user_metadata = user.user_metadata || {};
 
-  if (!user.email || user.user_metadata.fullcontact) {
+  if (!shouldRun()) {
     callback(null, user, context);
     return;
   }
@@ -34,17 +34,30 @@ function enrichProfile(user, context, callback) {
   );
 
   function getProfile() {
-    const body = {
-      email: user.email
-    };
-
     return global.requestPostAsync({
       url: 'https://api.fullcontact.com/v3/person.enrich',
       headers: {
         Authorization: 'Bearer ' + FULLCONTACT_KEY
       },
-      body: body,
+      body: {
+        email: user.email
+      },
       json: true
     });
+  }
+
+  function shouldRun() {
+    if (
+      context.protocol === 'redirect-callback' ||
+      context.request.query.prompt === 'none'
+    ) {
+      return false;
+    }
+
+    if (!user.email || user.user_metadata.fullcontact) {
+      return false;
+    }
+
+    return true;
   }
 }
