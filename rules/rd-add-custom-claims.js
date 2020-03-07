@@ -1,7 +1,6 @@
 function addCustomClaims(user, context, callback) {
   const NS = 'https://letsdoauth.com';
 
-  // context object - https://auth0.com/docs/rules/references/context-object
   const {
     authorization: { roles = [] },
     connection = '',
