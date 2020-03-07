@@ -3,13 +3,12 @@ function boostrap(user, context, callback) {
   const ManagementClient = require('auth0@2.17.0').ManagementClient;
 
   // Limit access to the following audience, client credentials exchange only.
+  const excludedAudiences = [
+    'https://api-db.letsdoauth.com',
+    'https://rudydahbura.auth0.com/api/v2/'
+  ];
   const audience = _.get(context, 'request.query.audience', '').toLowerCase();
-  if (
-    [
-      'https://api-db.letsdoauth.com',
-      'https://rudydahbura.auth0.com/api/v2/'
-    ].includes(audience)
-  ) {
+  if (excludedAudiences.includes(audience)) {
     callback(new UnauthorizedError('Cannot access protected API.'));
     return;
   }
