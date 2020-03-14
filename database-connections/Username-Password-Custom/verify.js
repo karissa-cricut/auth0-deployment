@@ -8,12 +8,20 @@ async function verify(email, callback) {
   const fetch = require('node-fetch@2.6.0');
   const { URL } = require('url');
 
-  const BASE_URL = 'https://letsdoauth-api.herokuapp.com';
+  const CONFIG = {
+    DOMAIN_API: '##DOMAIN_API##',
+    DOMAIN_AUTH0: '##DOMAIN_AUTH0##',
+    JWT_AUDIENCE: '##JWT_AUDIENCE##',
+    JWT_CLIENT_ID: '##JWT_CLIENT_ID##',
+    JWT_CLIENT_SECRET: '##JWT_CLIENT_SECRET##'
+  };
 
   try {
     const jwt = await requestJwt();
 
-    const url = new URL(`${BASE_URL}/api/databases/users/${email}/verify`);
+    const url = new URL(
+      `https://${CONFIG.DOMAIN_API}/api/databases/users/${email}/verify`
+    );
 
     const res = await fetch(url, {
       method: 'PATCH',
@@ -40,14 +48,7 @@ async function verify(email, callback) {
   }
 
   async function requestJwt() {
-    const CONFIG = {
-      AUTH0_DOMAIN: '##AUTH0_DOMAIN##',
-      JWT_AUDIENCE: '##JWT_AUDIENCE##',
-      JWT_CLIENT_ID: '##JWT_CLIENT_ID##',
-      JWT_CLIENT_SECRET: '##JWT_CLIENT_SECRET##'
-    };
-
-    const url = new URL(`https://${CONFIG.AUTH0_DOMAIN}/oauth/token`);
+    const url = new URL(`https://${CONFIG.DOMAIN_AUTH0}/oauth/token`);
 
     const res = await fetch(url, {
       method: 'POST',
