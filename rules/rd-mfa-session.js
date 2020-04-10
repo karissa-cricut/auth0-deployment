@@ -1,4 +1,6 @@
 function multiFactorSession(user, context, callback) {
+  const _ = require('lodash@4.17.10');
+
   const MFA_CLIENTS = [
     'cAssYWZD28Ke29v0T3rn79wgwtpsucBF',
     'lsHbUXlIE1d8SLWgOZBCfBL8SbmRCRc-'
@@ -9,9 +11,8 @@ function multiFactorSession(user, context, callback) {
     return;
   }
 
-  const completedMfa = !!context.authentication.methods.find(
-    (method) => method.name === 'mfa'
-  );
+  const methods = _.get(context, 'authentication.methods', []);
+  const completedMfa = !!methods.find((method) => method.name === 'mfa');
 
   if (completedMfa) {
     callback(null, user, context);
