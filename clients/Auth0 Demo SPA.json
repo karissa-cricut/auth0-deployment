@@ -31,7 +31,7 @@
   },
   "refresh_token": {
     "rotation_type": "non-rotating",
-    "expiration_type": "non-rotating"
+    "expiration_type": "non-expiring"
   },
   "client_metadata": {},
   "oidc_conformant": true,
