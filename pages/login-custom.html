@@ -208,12 +208,12 @@
         <p class="mt-5 mb-3 text-muted text-center">&copy; 2019</p>
       </form>
 
-      <script src="https://cdn.auth0.com/js/auth0/9.11.3/auth0.min.js"></script>
+      <script src="https://cdn.auth0.com/js/auth0/9.13.2/auth0.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
       <script>
-        window.addEventListener('load', function() {
+        window.addEventListener('load', function () {
           var config = JSON.parse(
             decodeURIComponent(escape(window.atob('@@config@@')))
           );
@@ -249,7 +249,7 @@
                 username: username,
                 password: password
               },
-              function(err) {
+              function (err) {
                 if (err) displayError(err);
               }
             );
@@ -266,7 +266,7 @@
                 email: email,
                 password: password
               },
-              function(err) {
+              function (err) {
                 if (err) displayError(err);
               }
             );
@@ -279,7 +279,7 @@
               {
                 connection: 'google-oauth2'
               },
-              function(err) {
+              function (err) {
                 if (err) displayError(err);
               }
             );

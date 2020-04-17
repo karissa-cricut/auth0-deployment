@@ -63,7 +63,7 @@
       }
     </style>
 
-    <script src="https://cdn.auth0.com/js/lock/11.22.4/lock.min.js"></script>
+    <script src="https://cdn.auth0.com/js/lock/11.23.0/lock.min.js"></script>
     <script>
       // Decode utf8 characters properly
       var config = JSON.parse(
@@ -119,7 +119,7 @@
           {
             name: 'given_name',
             placeholder: 'first name',
-            validator: function(value) {
+            validator: function (value) {
               return {
                 valid: value.length > 0 && value.length <= 25,
                 hint: 'Must be between 1 and 25 characters'
@@ -129,7 +129,7 @@
           {
             name: 'family_name',
             placeholder: 'last name',
-            validator: function(value) {
+            validator: function (value) {
               return {
                 valid: value.length > 0 && value.length <= 25,
                 hint: 'Must be between 1 and 25 characters'
