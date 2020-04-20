@@ -54,6 +54,19 @@
 
   <body>
     <style>
+      body {
+        background: rgb(20, 30, 48);
+        background: linear-gradient(
+          90deg,
+          rgba(20, 30, 48, 1) 0%,
+          rgba(36, 59, 85, 1) 100%
+        );
+      }
+
+      #form-signin {
+        margin-top: 200px;
+      }
+
       .auth0-lock.auth0-lock .auth0-lock-header-bg {
         display: none;
       }
@@ -63,7 +76,7 @@
       }
     </style>
 
-    <script src="https://cdn.auth0.com/js/lock/11.23.0/lock.min.js"></script>
+    <script src="https://cdn.auth0.com/js/lock/11.23.1/lock.min.js"></script>
     <script>
       // Decode utf8 characters properly
       var config = JSON.parse(
