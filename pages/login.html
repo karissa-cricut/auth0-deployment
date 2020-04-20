@@ -113,10 +113,9 @@
         defaultADUsernameFromEmailPrefix: true
       };
 
-      var lock =
-        config.extraParams.mode === 'passwordless'
-          ? initLockPwdless(commonConfig)
-          : initLock(commonConfig);
+      var lock = !!config.extraParams.passwordless
+        ? initLockPwdless(commonConfig)
+        : initLock(commonConfig);
 
       if (colors.page_background) {
         var css =
