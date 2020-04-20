@@ -56,6 +56,12 @@
       .auth0-lock.auth0-lock.auth0-lock-opened .auth0-lock-widget {
         box-shadow: none;
       }
+
+      @media only screen and (max-width: 576px) {
+        #form-signin {
+          margin-top: 0;
+        }
+      }
     </style>
 
     <div id="form-signin"></div>
@@ -79,7 +85,7 @@
       var loginHint = config.extraParams.login_hint;
       var colors = config.colors || {};
 
-      var lock = new Auth0Lock(config.clientID, config.auth0Domain, {
+      var commonConfig = {
         auth: {
           redirectUrl: config.callbackURL,
           responseType:
@@ -104,37 +110,13 @@
         },
         prefill: loginHint ? { email: loginHint, username: loginHint } : null,
         closable: false,
-        defaultADUsernameFromEmailPrefix: true,
+        defaultADUsernameFromEmailPrefix: true
+      };
 
-        // settings below are custom
-        _enableIdPInitiatedLogin: true,
-        container: 'form-signin',
-        initialScreen:
-          config.extraParams.screen_hint === 'signup' ? 'signUp' : 'login',
-        mustAcceptTerms: true,
-        additionalSignUpFields: [
-          {
-            name: 'given_name',
-            placeholder: 'first name',
-            validator: function (value) {
-              return {
-                valid: value.length > 0 && value.length <= 25,
-                hint: 'Must be between 1 and 25 characters'
-              };
-            }
-          },
-          {
-            name: 'family_name',
-            placeholder: 'last name',
-            validator: function (value) {
-              return {
-                valid: value.length > 0 && value.length <= 25,
-                hint: 'Must be between 1 and 25 characters'
-              };
-            }
-          }
-        ]
-      });
+      var lock =
+        config.extraParams.mode === 'passwordless'
+          ? initLockPwdless(commonConfig)
+          : initLock(commonConfig);
 
       if (colors.page_background) {
         var css =
@@ -148,6 +130,53 @@
       }
 
       lock.show();
+
+      function initLock(commonConfig) {
+        Object.assign(commonConfig, {
+          _enableIdPInitiatedLogin: true,
+          container: 'form-signin',
+          initialScreen:
+            config.extraParams.screen_hint === 'signup' ? 'signUp' : 'login',
+          mustAcceptTerms: true,
+          additionalSignUpFields: [
+            {
+              name: 'given_name',
+              placeholder: 'first name',
+              validator: function (value) {
+                return {
+                  valid: value.length > 0 && value.length <= 25,
+                  hint: 'Must be between 1 and 25 characters'
+                };
+              }
+            },
+            {
+              name: 'family_name',
+              placeholder: 'last name',
+              validator: function (value) {
+                return {
+                  valid: value.length > 0 && value.length <= 25,
+                  hint: 'Must be between 1 and 25 characters'
+                };
+              }
+            }
+          ]
+        });
+        var clientID = config.clientID;
+        var domain = config.auth0Domain;
+        return new Auth0Lock(clientID, domain, commonConfig);
+      }
+
+      function initLockPwdless(commonConfig) {
+        Object.assign(commonConfig, {
+          _enableIdPInitiatedLogin: true,
+          container: 'form-signin',
+          mustAcceptTerms: true,
+          passwordlessMethod: 'link' // 'code'
+        });
+        var clientID = config.clientID;
+        var domain = config.auth0Domain;
+        return new Auth0LockPasswordless(clientID, domain, commonConfig);
+      }
     </script>
   </body>
 </html>
