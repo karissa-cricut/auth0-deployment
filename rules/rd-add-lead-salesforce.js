@@ -3,15 +3,15 @@ function addLeadSalesforce(user, context, callback) {
   const SF_CLIENT_SECRET = '##SALESFORCE_CLIENT_SECRET##';
   const SF_PASSWORD = '##SALESFORCE_PASSWORD##';
   const SF_USERNAME = '##SALESFORCE_USERNAME##';
-  const SLACK_WEBHOOK_URL = '##SLACK_WEBHOOK_URL##';
   const SLACK_CHANNEL = '#demo';
+  const SLACK_WEBHOOK_URL = '##SLACK_WEBHOOK_URL##';
 
   const slack = require('slack-notify@0.1.4')(SLACK_WEBHOOK_URL);
 
   user.user_metadata = user.user_metadata || {};
   user.app_metadata = user.app_metadata || {};
 
-  if (!user.user_metadata.fullcontact || user.app_metadata.recorded_as_lead) {
+  if (user.app_metadata.recorded_as_lead) {
     callback(null, user, context);
     return;
   }
@@ -65,16 +65,14 @@ function addLeadSalesforce(user, context, callback) {
   function createSalesforceLead(salesforceUrl, salesforceToken, user) {
     const fullcontact = user.user_metadata.fullcontact;
     const body = {
-      City: fullcontact.details.locations[0].city,
-      Company: fullcontact.organization,
-      Country: fullcontact.details.locations[0].country,
+      City: '',
+      Company: 'ACME Corp',
+      Country: 'USA',
       Email: user.email,
-      FirstName: fullcontact.details.name.given,
-      LastName: fullcontact.details.name.family,
+      FirstName: user.given_name,
+      LastName: user.family_name,
       LeadSource: 'Auth0 Sign Up',
-      State: fullcontact.details.locations[0].region,
-      Title: fullcontact.title,
-      Website: fullcontact.website
+      State: 'CA'
     };
 
     return global.requestPostAsync({
