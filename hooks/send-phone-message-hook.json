@@ -4,6 +4,5 @@
   "dependencies": {
     "aws-sdk": "2.662.0"
   },
-  "enabled": true,
-  "triggerId": "send-phone-message"
+  "enabled": true
 }
