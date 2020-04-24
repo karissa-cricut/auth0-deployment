@@ -27,9 +27,9 @@ module.exports = function (recipient, text, context, cb) {
   const params = { Message: text, PhoneNumber: recipient };
 
   const sns = new AWS.SNS({ apiVersion: '2010-03-31' });
-  const response = sns.publish(params).promise();
+  const snsResponse = sns.publish(params).promise();
 
-  response
+  snsResponse
     .then(function () {
       cb(null, {});
     })
