@@ -1,0 +1,9 @@
+{
+  "name": "send-phone-message-hook",
+  "script": "./send-phone-message-hook.js",
+  "dependencies": {
+    "aws-sdk": "2.662.0"
+  },
+  "enabled": true,
+  "triggerId": "send-phone-message"
+}
