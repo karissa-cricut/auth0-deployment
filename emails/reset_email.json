@@ -6,5 +6,6 @@
   "syntax": "liquid",
   "body": "./reset_email.html",
   "urlLifetimeInSeconds": 432000,
+  "includeEmailInRedirect": false,
   "enabled": true
 }
