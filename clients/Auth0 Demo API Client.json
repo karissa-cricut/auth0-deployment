@@ -17,10 +17,5 @@
   },
   "client_metadata": {},
   "oidc_conformant": false,
-  "grant_types": [
-    "authorization_code",
-    "client_credentials",
-    "implicit",
-    "refresh_token"
-  ]
+  "grant_types": ["authorization_code", "client_credentials", "refresh_token"]
 }
