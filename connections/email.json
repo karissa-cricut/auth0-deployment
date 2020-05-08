@@ -2,7 +2,7 @@
   "name": "email",
   "strategy": "email",
   "is_domain_connection": false,
-  "enabled_clients": ["Auth0 Demo SPA"],
+  "enabled_clients": ["Auth0 Demo SPA", "Auth0 Demo Web App"],
   "options": {
     "disable_signup": false,
     "name": "email",
