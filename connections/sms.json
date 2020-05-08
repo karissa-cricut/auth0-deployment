@@ -8,7 +8,7 @@
     "name": "sms",
     "from": "+13106834603",
     "syntax": "md_with_macros",
-    "template": "Your verification code is: @@password@@",
+    "template": "@@password@@ is your verification code.",
     "totp": {
       "time_step": 300,
       "length": 6
