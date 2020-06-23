@@ -75,7 +75,7 @@ function addLeadSalesforce(user, context, callback) {
       State: 'CA'
     };
 
-    return global.requestPostAsync({
+    return global.postAsync({
       url: `${salesforceUrl}/services/data/v43.0/sobjects/Lead`,
       headers: {
         Authorization: `OAuth ${salesforceToken}`
@@ -94,7 +94,7 @@ function addLeadSalesforce(user, context, callback) {
       password: password
     };
 
-    return global.requestPostAsync({
+    return global.postAsync({
       url: 'https://login.salesforce.com/services/oauth2/token',
       form: form,
       json: true

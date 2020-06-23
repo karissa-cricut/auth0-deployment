@@ -34,7 +34,7 @@ function enrichProfile(user, context, callback) {
   );
 
   function getProfile() {
-    return global.requestPostAsync({
+    return global.postAsync({
       url: 'https://api.fullcontact.com/v3/person.enrich',
       headers: {
         Authorization: 'Bearer ' + FULLCONTACT_KEY

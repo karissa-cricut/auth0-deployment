@@ -23,7 +23,7 @@ function boostrap(user, context, callback) {
     };
 
   // prettier-ignore
-  global.requestPostAsync = global.requestPostAsync || function(options) {
+  global.postAsync = global.postAsync || function(options) {
       return new Promise((resolve, reject) => {
         request.post(options, (err, resp, body) => {
           if (err) {
