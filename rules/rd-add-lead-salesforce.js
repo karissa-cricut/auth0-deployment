@@ -5,8 +5,6 @@ async function addLeadSalesforce(user, context, callback) {
   const USERNAME = '##SALESFORCE_USERNAME##';
 
   user.app_metadata = user.app_metadata || {};
-  user.user_metadata = user.user_metadata || {};
-
   if (user.app_metadata.recorded_as_lead) {
     callback(null, user, context);
     return;
@@ -59,25 +57,14 @@ async function addLeadSalesforce(user, context, callback) {
   async function getSFToken(clientId, clientSecret, username, password) {
     const url = new URL('https://login.salesforce.com/services/oauth2/token');
 
-    const body = JSON.stringify({
-      grant_type: 'password',
-      client_id: clientId,
-      client_secret: clientSecret,
-      username: username,
-      password: password
-    });
-
-    // const body = new URLSearchParams();
-    // body.append('grant_type', 'password');
-    // body.append('client_id', clientId);
-    // body.append('client_secret', clientSecret);
-    // body.append('username', username);
-    // body.append('password', password);
+    const body = new URLSearchParams();
+    body.append('grant_type', 'password');
+    body.append('client_id', clientId);
+    body.append('client_secret', clientSecret);
+    body.append('username', username);
+    body.append('password', password);
 
     const res = await global.postFetchAsync(url, {
-      headers: {
-        'Content-Type': 'application/json'
-      },
       body: body
     });
 
