@@ -6,21 +6,16 @@ function addCustomClaims(user, context, callback) {
     connection = '',
     connectionStrategy = '',
     request: {
-      geoip: {
-        continent_code: continentCode = '',
-        country_name: countryName = '',
-        time_zone: timeZone = ''
-      }
+      geoip: { continent_code = '', country_name = '', time_zone = '' }
     }
   } = context;
 
-  context.accessToken[`${NS}/roles`] = roles;
-
   context.idToken[`${NS}/connection`] = connection;
   context.idToken[`${NS}/connectionStrategy`] = connectionStrategy;
-  context.idToken[`${NS}/continent`] = continentCode;
-  context.idToken[`${NS}/country`] = countryName;
-  context.idToken[`${NS}/timezone`] = timeZone;
+  context.idToken[`${NS}/continent`] = continent_code;
+  context.idToken[`${NS}/country`] = country_name;
+  context.idToken[`${NS}/roles`] = roles;
+  context.idToken[`${NS}/timezone`] = time_zone;
 
   callback(null, user, context);
 }
