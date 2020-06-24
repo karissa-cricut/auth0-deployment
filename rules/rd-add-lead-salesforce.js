@@ -1,4 +1,4 @@
-function addLeadSalesforce(user, context, callback) {
+async function addLeadSalesforce(user, context, callback) {
   const CLIENT_ID = '##SALESFORCE_CLIENT_ID##';
   const CLIENT_SECRET = '##SALESFORCE_CLIENT_SECRET##';
   const PASSWORD = '##SALESFORCE_PASSWORD##';
@@ -12,51 +12,75 @@ function addLeadSalesforce(user, context, callback) {
     return;
   }
 
-  getSFToken(CLIENT_ID, CLIENT_SECRET, USERNAME, PASSWORD)
-    .then((resp) => {
-      return createSFLead(resp.instance_url, resp.access_token, user);
-    })
-    .then((resp) => {
-      user.app_metadata.recorded_as_lead = true;
+  try {
+    const token = await getSFToken(
+      CLIENT_ID,
+      CLIENT_SECRET,
+      USERNAME,
+      PASSWORD
+    );
 
-      auth0.users.updateAppMetadata(user.user_id, user.app_metadata);
+    const res = await createSFLead(
+      token.instance_url,
+      token.access_token,
+      user
+    );
 
-      callback(null, user, context);
-    })
-    .catch((err) => callback(err));
+    user.app_metadata.recorded_as_lead = true;
+    auth0.users.updateAppMetadata(user.user_id, user.app_metadata);
 
-  function createSFLead(sfUrl, sfToken, user) {
-    const body = {
+    callback(null, user, context);
+  } catch (err) {
+    callback(err);
+  }
+
+  async function createSFLead(instanceUrl, token, user) {
+    const url = new URL(`${instanceUrl}/services/data/v43.0/sobjects/Lead`);
+
+    const body = JSON.stringify({
       FirstName: user.given_name,
       LastName: user.family_name,
       Email: user.email,
       Company: 'ACME Corp',
       LeadSource: 'Auth0 Sign Up'
-    };
-
-    return global.postAsync({
-      url: `${sfUrl}/services/data/v43.0/sobjects/Lead`,
-      headers: {
-        Authorization: `OAuth ${sfToken}`
-      },
-      body: body,
-      json: true
     });
+
+    const res = await global.postFetchAsync(url, {
+      headers: {
+        Authorization: `OAuth ${token}`,
+        'Content-Type': 'application/json'
+      },
+      body: body
+    });
+
+    return JSON.parse(res);
   }
 
-  function getSFToken(clientId, clientSecret, username, password) {
-    const form = {
+  async function getSFToken(clientId, clientSecret, username, password) {
+    const url = new URL('https://login.salesforce.com/services/oauth2/token');
+
+    const body = JSON.stringify({
       grant_type: 'password',
       client_id: clientId,
       client_secret: clientSecret,
       username: username,
       password: password
-    };
-
-    return global.postAsync({
-      url: 'https://login.salesforce.com/services/oauth2/token',
-      form: form,
-      json: true
     });
+
+    // const body = new URLSearchParams();
+    // body.append('grant_type', 'password');
+    // body.append('client_id', clientId);
+    // body.append('client_secret', clientSecret);
+    // body.append('username', username);
+    // body.append('password', password);
+
+    const res = await global.postFetchAsync(url, {
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: body
+    });
+
+    return JSON.parse(res);
   }
 }

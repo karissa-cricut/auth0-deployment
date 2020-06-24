@@ -1,9 +1,11 @@
 function boostrap(user, context, callback) {
   const _ = require('lodash@4.17.10');
-  const ManagementClient = require('auth0@2.17.0').ManagementClient;
+  const fetch = require('node-fetch@2.6.0');
+  const managementClient = require('auth0@2.23.0').ManagementClient;
 
   // Limit access to the following audience, client credentials exchange only.
   const excludedAudiences = ['https://api-db.letsdoauth.com'];
+
   const audience = _.get(context, 'request.query.audience', '').toLowerCase();
   if (excludedAudiences.includes(audience)) {
     callback(new UnauthorizedError('Cannot access protected API.'));
@@ -11,7 +13,7 @@ function boostrap(user, context, callback) {
   }
 
   // prettier-ignore
-  global.management = global.management || new ManagementClient({
+  global.management = global.management || new managementClient({
       domain: auth0.domain,
       token: auth0.accessToken
     });
@@ -23,21 +25,15 @@ function boostrap(user, context, callback) {
     };
 
   // prettier-ignore
-  global.postAsync = global.postAsync || function(options) {
-      return new Promise((resolve, reject) => {
-        request.post(options, (err, resp, body) => {
-          if (err) {
-            reject(err);
-            return;
-          }
-          if (!/^2/.test('' + resp.statusCode)) {
-            reject(new Error(JSON.stringify(body)));
-            return;
-          }
-          resolve(body);
-        });
-      });
-    };
+  global.postFetchAsync = global.postFetchAsync || async function(url, options) {
+    const postOptions = Object.assign({ method: 'POST' }, options);
+    const res = await fetch(url, postOptions);
+    const body = await res.text();
+    if (res.ok) {
+      return body;
+    }
+    throw new Error(body);
+  };
 
   callback(null, user, context);
 }
