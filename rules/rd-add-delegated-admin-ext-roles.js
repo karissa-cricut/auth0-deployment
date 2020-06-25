@@ -1,10 +1,10 @@
 function addDelegatedAdminExtRoles(user, context, callback) {
   const _ = require('lodash@4.17.10');
-  const CLIENT_ID = 'b7sLyiAinlvMDuTlozInqxQ2H1fIQad4';
+  const CLIENT = 'Auth0 Delegated Admin';
   const ROLE_ADMIN = 'Delegated Admin - Administrator';
   const ROLE_USER = 'Delegated Admin - User';
 
-  if (context.clientID !== CLIENT_ID) {
+  if (context.clientName !== CLIENT) {
     callback(null, user, context);
     return;
   }

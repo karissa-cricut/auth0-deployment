@@ -30,7 +30,7 @@ function linkAccountsMergeMetadata(user, context, callback) {
       }
 
       let data = JSON.parse(body);
-      data = data.filter(function(u) {
+      data = data.filter(function (u) {
         return u.email_verified && u.user_id !== user.user_id;
       });
 
@@ -89,7 +89,7 @@ function linkAccountsMergeMetadata(user, context, callback) {
             }
           );
         })
-        .catch(function(err) {
+        .catch(function (err) {
           callback(err);
         });
     }

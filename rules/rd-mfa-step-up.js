@@ -1,18 +1,17 @@
 function multiFactorStepUp(user, context, callback) {
-  const MFA_CLIENTS = [
-    'lsHbUXlIE1d8SLWgOZBCfBL8SbmRCRc-',
-    'pjpZ6NSU6rOTMpdhEJmKzCRUqvKeVVrP'
-  ];
-  const MFA_POLICIES =
+  const _ = require('lodash@4.17.10');
+
+  const CLIENTS = ['Auth0 Demo SPA', 'Auth0 Demo Web App'];
+  const POLICIES =
     'http://schemas.openid.net/pape/policies/2007/06/multi-factor';
 
-  if (!MFA_CLIENTS.includes(context.clientID)) {
+  if (!CLIENTS.includes(context.clientName)) {
     callback(null, user, context);
     return;
   }
 
-  const { query = {} } = context.request;
-  if (query.acr_values !== MFA_POLICIES) {
+  const query = _.get(context, 'request', {});
+  if (query.acr_values !== POLICIES) {
     callback(null, user, context);
     return;
   }

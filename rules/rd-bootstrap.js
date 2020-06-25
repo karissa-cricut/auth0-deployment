@@ -14,7 +14,7 @@ function boostrap(user, context, callback) {
 
   // prettier-ignore
   global.isJson = global.isJson || function(resp) {
-    const contentType = resp.headers.get('Content-Type') || resp.headers.get('content-type') || '';
+    const contentType = resp.headers.get('Content-Type')   || resp.headers.get('content-type') || '';
     return contentType.includes('application/json');
   };
 

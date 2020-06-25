@@ -1,16 +1,15 @@
 function multiFactorSession(user, context, callback) {
   const _ = require('lodash@4.17.10');
 
-  const MFA_CLIENTS = [
-    'cAssYWZD28Ke29v0T3rn79wgwtpsucBF',
-    'lsHbUXlIE1d8SLWgOZBCfBL8SbmRCRc-'
-  ];
+  const CLIENTS = ['Auth0 Demo SPA', 'Auth0 Demo Web App'];
 
-  if (!MFA_CLIENTS.includes(context.clientID)) {
+  // check if MFA enabled for client
+  if (!CLIENTS.includes(context.clientName)) {
     callback(null, user, context);
     return;
   }
 
+  // check if MFA has been completed
   const methods = _.get(context, 'authentication.methods', []);
   const completedMfa = !!methods.find((method) => method.name === 'mfa');
 
