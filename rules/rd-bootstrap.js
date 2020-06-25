@@ -13,8 +13,8 @@ function boostrap(user, context, callback) {
   }
 
   // prettier-ignore
-  global.isJson = global.isJson || function(headers) {
-    const contentType = headers['Content-Type'] || headers['content-type'] || '';
+  global.isJson = global.isJson || function(resp) {
+    const contentType = resp.headers.get('Content-Type') || resp.headers.get('content-type') || '';
     return contentType.includes('application/json');
   };
 
@@ -27,10 +27,10 @@ function boostrap(user, context, callback) {
   // prettier-ignore
   global.postAsync = global.postAsync || async function(url, options) {
     const postOptions = Object.assign({ method: 'POST' }, options);
-    const res = await fetch(url, postOptions);
-    const body = await res.text();
-    if (res.ok) {
-      return body;
+    const resp = await fetch(url, postOptions);
+    const body = await resp.text();
+    if (resp.ok) {
+      return global.isJson(resp) ? JSON.parse(body) : body;
     }
     throw new Error(body);
   };

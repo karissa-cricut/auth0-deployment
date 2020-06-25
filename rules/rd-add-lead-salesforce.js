@@ -43,7 +43,7 @@ async function addLeadSalesforce(user, context, callback) {
       LeadSource: 'Auth0 Sign Up'
     });
 
-    const res = await global.postAsync(url, {
+    const resp = await global.postAsync(url, {
       headers: {
         Authorization: `OAuth ${token}`,
         'Content-Type': 'application/json'
@@ -51,7 +51,7 @@ async function addLeadSalesforce(user, context, callback) {
       body: body
     });
 
-    return JSON.parse(res);
+    return resp;
   }
 
   async function getSFToken(clientId, clientSecret, username, password) {
@@ -64,10 +64,10 @@ async function addLeadSalesforce(user, context, callback) {
     body.append('username', username);
     body.append('password', password);
 
-    const res = await global.postAsync(url, {
+    const resp = await global.postAsync(url, {
       body: body
     });
 
-    return JSON.parse(res);
+    return resp;
   }
 }
