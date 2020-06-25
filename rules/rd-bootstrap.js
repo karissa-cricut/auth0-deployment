@@ -13,19 +13,19 @@ function boostrap(user, context, callback) {
   }
 
   // prettier-ignore
+  global.isJson = global.isJson || function(headers) {
+    const contentType = headers['Content-Type'] || headers['content-type'] || '';
+    return contentType.includes('application/json');
+  };
+
+  // prettier-ignore
   global.management = global.management || new managementClient({
       domain: auth0.domain,
       token: auth0.accessToken
     });
 
   // prettier-ignore
-  global.isJson = global.isJson || function(headers) {
-      const contentType = headers['Content-Type'] || headers['content-type'] || '';
-      return contentType.includes('application/json');
-    };
-
-  // prettier-ignore
-  global.postFetchAsync = global.postFetchAsync || async function(url, options) {
+  global.postAsync = global.postAsync || async function(url, options) {
     const postOptions = Object.assign({ method: 'POST' }, options);
     const res = await fetch(url, postOptions);
     const body = await res.text();

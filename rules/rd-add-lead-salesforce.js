@@ -43,7 +43,7 @@ async function addLeadSalesforce(user, context, callback) {
       LeadSource: 'Auth0 Sign Up'
     });
 
-    const res = await global.postFetchAsync(url, {
+    const res = await global.postAsync(url, {
       headers: {
         Authorization: `OAuth ${token}`,
         'Content-Type': 'application/json'
@@ -64,7 +64,7 @@ async function addLeadSalesforce(user, context, callback) {
     body.append('username', username);
     body.append('password', password);
 
-    const res = await global.postFetchAsync(url, {
+    const res = await global.postAsync(url, {
       body: body
     });
 
