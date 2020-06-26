@@ -10,7 +10,7 @@ function multiFactorStepUp(user, context, callback) {
     return;
   }
 
-  const query = _.get(context, 'request', {});
+  const query = _.get(context, 'request.query', {});
   if (query.acr_values !== POLICIES) {
     callback(null, user, context);
     return;
