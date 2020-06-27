@@ -1,5 +1,5 @@
 {
-  "name": "dahbura-auth0-saml",
+  "name": "dahbura-saml-auth0",
   "display_name": "Auth0 SAML",
   "strategy": "samlp",
   "is_domain_connection": false,

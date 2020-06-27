@@ -1,5 +1,5 @@
 {
-  "name": "dahbura-okta-saml",
+  "name": "dahbura-saml-okta",
   "display_name": "Okta SAML",
   "strategy": "samlp",
   "is_domain_connection": false,
