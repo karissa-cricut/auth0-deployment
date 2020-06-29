@@ -3,6 +3,7 @@
   "strategy": "auth0",
   "is_domain_connection": false,
   "enabled_clients": [
+    "Auth0 Demo Device Flow",
     "Auth0 Demo Salesforce",
     "Auth0 Demo SPA",
     "Auth0 Demo Web App"
