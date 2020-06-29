@@ -1,0 +1,31 @@
+{
+  "name": "Auth0 Demo Device Flow",
+  "description": "Auth0 device flow demonstration application.",
+  "logo_uri": "",
+  "is_first_party": true,
+  "app_type": "native",
+  "token_endpoint_auth_method": "none",
+  "callbacks": ["https://rudydahbura.auth0.com/login"],
+  "initiate_login_uri": "",
+  "web_origins": ["https://auth0.github.io"],
+  "allowed_logout_urls": [],
+  "allowed_origins": [],
+  "jwt_configuration": {
+    "alg": "RS256",
+    "scopes": {},
+    "lifetime_in_seconds": 36000
+  },
+  "refresh_token": {
+    "rotation_type": "non-rotating",
+    "expiration_type": "non-expiring"
+  },
+  "client_metadata": {},
+  "oidc_conformant": true,
+  "grant_types": [
+    "authorization_code",
+    "implicit",
+    "refresh_token",
+    "urn:ietf:params:oauth:grant-type:device_code"
+  ],
+  "addons": {}
+}
