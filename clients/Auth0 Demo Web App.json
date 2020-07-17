@@ -15,11 +15,13 @@
   "jwt_configuration": {
     "alg": "RS256",
     "scopes": {},
-    "lifetime_in_seconds": 36000,
-    "secret_encoded": false
+    "lifetime_in_seconds": 36000
   },
   "client_metadata": {},
   "oidc_conformant": true,
   "grant_types": ["authorization_code", "client_credentials", "refresh_token"],
+  "custom_login_page": "",
+  "custom_login_page_on": true,
+  "custom_login_page_preview": "",
   "addons": {}
 }
