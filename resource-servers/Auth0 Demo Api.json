@@ -26,20 +26,20 @@
       "description": "Delete users."
     },
     {
-      "value": "create:events",
-      "description": "Create events."
+      "value": "create:clients",
+      "description": "Create clients."
     },
     {
-      "value": "read:events",
-      "description": "Read events."
+      "value": "read:clients",
+      "description": "Read clients."
     },
     {
-      "value": "update:events",
-      "description": "Update events."
+      "value": "update:clients",
+      "description": "Update clients."
     },
     {
-      "value": "delete:events",
-      "description": "Delete events."
+      "value": "delete:clients",
+      "description": "Delete clients."
     }
   ]
 }
