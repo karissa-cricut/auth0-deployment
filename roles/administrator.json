@@ -3,7 +3,7 @@
   "description": "Role for administrators.",
   "permissions": [
     {
-      "permission_name": "create:events",
+      "permission_name": "create:clients",
       "resource_server_identifier": "https://api.letsdoauth.com"
     },
     {
@@ -11,7 +11,7 @@
       "resource_server_identifier": "https://api.letsdoauth.com"
     },
     {
-      "permission_name": "delete:events",
+      "permission_name": "delete:clients",
       "resource_server_identifier": "https://api.letsdoauth.com"
     },
     {
@@ -19,7 +19,7 @@
       "resource_server_identifier": "https://api.letsdoauth.com"
     },
     {
-      "permission_name": "read:events",
+      "permission_name": "read:clients",
       "resource_server_identifier": "https://api.letsdoauth.com"
     },
     {
@@ -27,7 +27,7 @@
       "resource_server_identifier": "https://api.letsdoauth.com"
     },
     {
-      "permission_name": "update:events",
+      "permission_name": "update:clients",
       "resource_server_identifier": "https://api.letsdoauth.com"
     },
     {
