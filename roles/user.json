@@ -3,7 +3,7 @@
   "description": "Role for users.",
   "permissions": [
     {
-      "permission_name": "read:events",
+      "permission_name": "read:clients",
       "resource_server_identifier": "https://api.letsdoauth.com"
     },
     {
