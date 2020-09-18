@@ -9,6 +9,12 @@ function multiFactorSession(user, context, callback) {
     return;
   }
 
+  // check if MFA enabled for use
+  if (!user.app_metadata.enableMfa) {
+    callback(null, user, context);
+    return;
+  }
+
   // check if MFA has been completed
   const methods = _.get(context, 'authentication.methods', []);
   const completedMfa = !!methods.find((method) => method.name === 'mfa');
